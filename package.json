@@ -31,10 +31,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.53.2",
-<<<<<<< HEAD
     "react-loader-spinner": "^6.1.6",
-=======
->>>>>>> 8ab54666d26d471c636b4cdfafa4237bc890f2df
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
