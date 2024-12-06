@@ -19,7 +19,6 @@ export const adminNavItems: navItem[] = [
     label: "Dashboard",
     children: [
       {
-<<<<<<< HEAD
         title: "Add Category",
         href: "/dashboard/add-category",
         description: "Add a new category to your store.",
@@ -67,16 +66,6 @@ export const vendorNavItems: navItem[] = [
         title: "Add Product",
         href: "/dashboard/add-product",
         description: "Add a new product to your store.",
-=======
-        title: "Add Brand",
-        href: "/dashboard/add-brand",
-        description: "Add a new brand to your store.",
-      },
-      {
-        title: "Add Product",
-        href: "/dashboard/add-product",
-        description: "Add new products to your inventory.",
->>>>>>> 8ab54666d26d471c636b4cdfafa4237bc890f2df
       },
       {
         title: "Manage Product",
@@ -85,27 +74,14 @@ export const vendorNavItems: navItem[] = [
       },
       {
         title: "Orders",
-<<<<<<< HEAD
         href: "/dashboard/my-orders",
         description: "Track your order history and status.",
-=======
-        href: "/dashboard/orders",
-        description: "View and manage all customer orders.",
->>>>>>> 8ab54666d26d471c636b4cdfafa4237bc890f2df
       },
       {
         title: "Reviews",
         href: "/dashboard/reviews",
         description: "Read and respond to customer reviews.",
       },
-<<<<<<< HEAD
-=======
-      {
-        title: "My Orders",
-        href: "/dashboard/my-orders",
-        description: "Track your order history and status.",
-      },
->>>>>>> 8ab54666d26d471c636b4cdfafa4237bc890f2df
     ],
   },
   {
