@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { gumelaArabic } from "@/assets/fonts";
-=======
-import Navbar from "@/components/shared/Navbar";
->>>>>>> 8ab54666d26d471c636b4cdfafa4237bc890f2df
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -18,14 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<<<<<<< HEAD
       <body className={`${gumelaArabic.className} antialiased`}>
-=======
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
->>>>>>> 8ab54666d26d471c636b4cdfafa4237bc890f2df
         {children}
       </body>
     </html>
