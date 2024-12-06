@@ -1,6 +1,7 @@
 "use client";
 
 import { adminNavItems, navItem, userNavItems } from "@/utils/navItems";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import {
@@ -13,7 +14,6 @@ import {
 } from "../ui/navigation-menu";
 import { ListItem } from "./ListItem";
 
-//! This is fake data remove after connect API
 const user = {
   role: "admin",
 };
@@ -35,15 +35,19 @@ const NavMenus = () => {
           {menus?.map((menu) => {
             if (menu.href) {
               return (
-                <NavigationMenuLink
-                  key={menu.href}
-                  className={`${navigationMenuTriggerStyle()} cursor-pointer ${
-                    pathname === menu.href
-                      ? "border border-theme/40 bg-transparent"
-                      : "bg-transparent"
-                  }`}
-                >
-                  {menu.label}
+                <NavigationMenuLink asChild key={menu.href}>
+                  <Link
+                    href={menu.href}
+                    className={`${navigationMenuTriggerStyle()} ${
+                      pathname === menu.href
+                        ? "border border-theme/40 bg-transparent"
+                        : "bg-transparent"
+                    }`}
+                  >
+                    <div className="text-sm font-medium leading-none">
+                      {menu.label}
+                    </div>
+                  </Link>
                 </NavigationMenuLink>
               );
             } else if (menu.children) {

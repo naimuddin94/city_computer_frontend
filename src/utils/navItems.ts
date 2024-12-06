@@ -19,14 +19,53 @@ export const adminNavItems: navItem[] = [
     label: "Dashboard",
     children: [
       {
-        title: "Add Brand",
-        href: "/dashboard/add-brand",
-        description: "Add a new brand to your store.",
+        title: "Add Category",
+        href: "/dashboard/add-category",
+        description: "Add a new category to your store.",
       },
+      {
+        title: "Manage Product",
+        href: "/dashboard/manage-product",
+        description: "Edit or remove existing products.",
+      },
+      {
+        title: "Reviews",
+        href: "/dashboard/reviews",
+        description: "Read and respond to customer reviews.",
+      },
+      {
+        title: "Orders",
+        href: "/dashboard/my-orders",
+        description: "Track your order history and status.",
+      },
+    ],
+  },
+  {
+    label: "About Us",
+    href: "/about-us",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact-us",
+  },
+];
+
+export const vendorNavItems: navItem[] = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Products",
+    href: "/products",
+  },
+  {
+    label: "Dashboard",
+    children: [
       {
         title: "Add Product",
         href: "/dashboard/add-product",
-        description: "Add new products to your inventory.",
+        description: "Add a new product to your store.",
       },
       {
         title: "Manage Product",
@@ -35,18 +74,13 @@ export const adminNavItems: navItem[] = [
       },
       {
         title: "Orders",
-        href: "/dashboard/orders",
-        description: "View and manage all customer orders.",
+        href: "/dashboard/my-orders",
+        description: "Track your order history and status.",
       },
       {
         title: "Reviews",
         href: "/dashboard/reviews",
         description: "Read and respond to customer reviews.",
-      },
-      {
-        title: "My Orders",
-        href: "/dashboard/my-orders",
-        description: "Track your order history and status.",
       },
     ],
   },

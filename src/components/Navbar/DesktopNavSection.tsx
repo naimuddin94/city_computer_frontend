@@ -2,20 +2,16 @@
 
 import logo from "@/assets/images/logo.png";
 import { Button } from "@/components/ui/button";
+import { handleLogout } from "@/helper/auth";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "../shared/Container";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import NavMenus from "./NavMenus";
-import { handleLogout } from "@/helper/auth";
 
 //! This is fake data remove after connect API
-const user = {
-  role: "admin",
-  image: "",
-  name: "user",
-};
+const user = null;
 const cart = {
   products: [],
 };
