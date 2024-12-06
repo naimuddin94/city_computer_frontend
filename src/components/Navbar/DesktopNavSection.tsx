@@ -55,7 +55,7 @@ const DesktopNavSection = () => {
           ) : (
             <>
               <Link href="/login">
-                <Button variant="outline">Login</Button>
+                <Button>Login</Button>
               </Link>
             </>
           )}
