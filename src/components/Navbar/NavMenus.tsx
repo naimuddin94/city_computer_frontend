@@ -13,6 +13,7 @@ import {
 } from "../ui/navigation-menu";
 import { ListItem } from "./ListItem";
 
+//! This is fake data remove after connect API
 const user = {
   role: "admin",
 };
@@ -36,7 +37,7 @@ const NavMenus = () => {
               return (
                 <NavigationMenuLink
                   key={menu.href}
-                  className={`${navigationMenuTriggerStyle()} ${
+                  className={`${navigationMenuTriggerStyle()} cursor-pointer ${
                     pathname === menu.href
                       ? "border border-theme/40 bg-transparent"
                       : "bg-transparent"
