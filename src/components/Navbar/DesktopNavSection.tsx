@@ -2,6 +2,7 @@
 
 import logo from "@/assets/images/logo.png";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/context/user.provider";
 import { handleLogout } from "@/helper/auth";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -11,12 +12,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import NavMenus from "./NavMenus";
 
 //! This is fake data remove after connect API
-const user = null;
 const cart = {
   products: [],
 };
 
 const DesktopNavSection = () => {
+  const { user, isLoading } = useUser();
   return (
     <Container>
       <nav className="hidden lg:flex justify-between items-center">
@@ -28,7 +29,7 @@ const DesktopNavSection = () => {
           <NavMenus />
         </div>
         <div className="flex items-center gap-5">
-          {user ? (
+          {user && !isLoading ? (
             <>
               <Link href="/dashboard/carts">
                 <div className="relative">

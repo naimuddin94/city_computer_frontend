@@ -1,4 +1,5 @@
 import { gumelaArabic } from "@/assets/fonts";
+import { Providers } from "@/providers";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${gumelaArabic.className} antialiased`}>
-        {children}
+        <Providers>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );
