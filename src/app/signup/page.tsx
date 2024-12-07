@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import RegisterForm from "./_components/RegisterForm";
+import SignupForm from "./_components/SignupForm";
 
-function Register() {
+function Signup() {
   return (
     <Container className="flex justify-center items-center min-h-screen py-8">
       <Card className="w-full max-w-sm mx-auto">
@@ -19,10 +19,10 @@ function Register() {
             Enter your details below to get started.
           </CardDescription>
         </CardHeader>
-        <RegisterForm />
+        <SignupForm />
       </Card>
     </Container>
   );
 }
 
-export default Register;
+export default Signup;

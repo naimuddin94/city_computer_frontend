@@ -46,13 +46,13 @@ const MobileNavSection = () => {
               {user ? (
                 <>
                   <Button onClick={handleLogout} variant="outline">
-                    Logout
+                    Signout
                   </Button>
                 </>
               ) : (
                 <>
-                  <Link href="/login">
-                    <Button variant="outline">Login</Button>
+                  <Link href="/signin">
+                    <Button variant="outline">Signin</Button>
                   </Link>
                 </>
               )}

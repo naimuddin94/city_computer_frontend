@@ -20,7 +20,7 @@ const cart = {
 const DesktopNavSection = () => {
   const { user, isLoading, setIsLoading } = useUser();
 
-  const handleLogout = async () => {
+  const handleSignout = async () => {
     try {
       const res = await signout();
       setIsLoading(true);
@@ -58,7 +58,7 @@ const DesktopNavSection = () => {
                   </span>
                 </div>
               </Link>
-              <Button onClick={handleLogout} variant="outline">
+              <Button onClick={handleSignout} variant="outline">
                 Logout
               </Button>
               <Avatar>
@@ -68,8 +68,8 @@ const DesktopNavSection = () => {
             </>
           ) : (
             <>
-              <Link href="/login">
-                <Button>Login</Button>
+              <Link href="/signin">
+                <Button>Signin</Button>
               </Link>
             </>
           )}

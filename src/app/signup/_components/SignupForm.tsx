@@ -16,7 +16,7 @@ import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-const RegisterForm = () => {
+const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -135,16 +135,16 @@ const RegisterForm = () => {
         </CardContent>
         <CardFooter className="flex items-center justify-between">
           <Link
-            href="/login"
+            href="/signin"
             className="text-sm hover:text-primary hover:underline"
           >
-            Have an account? Login
+            Have an account? Signin
           </Link>
-          <Button type="submit">Register</Button>
+          <Button type="submit">Signup</Button>
         </CardFooter>
       </form>
     </>
   );
 };
 
-export default RegisterForm;
+export default SignupForm;

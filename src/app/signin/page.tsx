@@ -7,30 +7,30 @@ import {
 
 import Container from "@/components/shared/Container";
 import Link from "next/link";
-import LoginForm from "./_components/LoginForm";
+import SigninForm from "./_components/SigninForm";
 
-function Login() {
+function Signin() {
   return (
     <Container className="flex justify-center items-center min-h-screen">
       <Card className="mx-auto max-w-sm">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-primary">
-            Login
+            Welcome Back
           </CardTitle>
           <CardDescription>
             Enter your email and password to access your account.
           </CardDescription>
         </CardHeader>
-        <LoginForm />
+        <SigninForm />
         <Link
-          href="/register"
+          href="/signup"
           className="inline-block w-full text-center text-sm  font-medium underline underline-offset-4 hover:text-primary pb-8"
         >
-          Haven&apos;t account yet ? Register
+          Haven&apos;t account yet ? Signup
         </Link>
       </Card>
     </Container>
   );
 }
 
-export default Login;
+export default Signin;

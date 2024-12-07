@@ -21,7 +21,7 @@ const defaultValues = {
   password: "password123",
 };
 
-const LoginForm = () => {
+const SigninForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -108,7 +108,7 @@ const LoginForm = () => {
             className="w-full border-theme/40"
             disabled={isSubmitting}
           >
-            Login
+            Signin
           </Button>
         </CardFooter>
       </form>
@@ -116,4 +116,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SigninForm;
