@@ -6,7 +6,9 @@ import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUser } from "@/context/user.provider";
+import { AuthSchema } from "@/schema/auth.schema";
 import { signinUser } from "@/services/AuthService";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { LucideEye, LucideEyeOff } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -31,8 +33,8 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
-  } = useForm({ defaultValues });
+    formState: { isSubmitting, errors },
+  } = useForm({ defaultValues, resolver: zodResolver(AuthSchema.loginSchema) });
 
   const onSubmit = async (data: FieldValues) => {
     try {
@@ -69,6 +71,9 @@ const LoginForm = () => {
               placeholder="mail@example.com"
               required
             />
+            <span className="text-primary text-sm">
+              {errors.email && errors.email.message}
+            </span>
           </div>
           <div className="space-y-2 relative">
             <div className="flex items-center justify-between">
@@ -87,9 +92,12 @@ const LoginForm = () => {
               placeholder="#########"
               required
             />
+            <span className="text-primary text-sm">
+              {errors.password && errors.password.message}
+            </span>
             <div
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-[40%] opacity-50 cursor-pointer"
+              className="absolute right-3 top-6 opacity-50 cursor-pointer"
             >
               {showPassword ? <LucideEye /> : <LucideEyeOff />}
             </div>

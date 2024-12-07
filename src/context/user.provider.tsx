@@ -18,6 +18,7 @@ const UserContext = createContext<IUserProviderValues | undefined>(undefined);
 interface IUserProviderValues {
   user: IUser | null;
   isLoading: boolean;
+  handleLogout: () => void;
   setUser: (user: IUser | null) => void;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
@@ -37,8 +38,14 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     handleUser();
   }, [isLoading]);
 
+  const handleLogout = () => {
+    setUser(null);
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser, isLoading, setIsLoading }}>
+    <UserContext.Provider
+      value={{ user, setUser, isLoading, setIsLoading, handleLogout }}
+    >
       {children}
     </UserContext.Provider>
   );
