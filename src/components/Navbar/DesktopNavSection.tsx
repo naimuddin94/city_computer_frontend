@@ -3,10 +3,11 @@
 import logo from "@/assets/images/logo.png";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/user.provider";
-import { handleLogout } from "@/helper/auth";
+import { signout } from "@/services/AuthService";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "sonner";
 import Container from "../shared/Container";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import NavMenus from "./NavMenus";
@@ -17,7 +18,19 @@ const cart = {
 };
 
 const DesktopNavSection = () => {
-  const { user, isLoading } = useUser();
+  const { user, isLoading, setIsLoading } = useUser();
+
+  const handleLogout = async () => {
+    try {
+      const res = await signout();
+      setIsLoading(true);
+      if (res?.success) {
+        toast.success(res.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Container>
       <nav className="hidden lg:flex justify-between items-center">

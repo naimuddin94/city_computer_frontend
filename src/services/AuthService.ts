@@ -41,9 +41,17 @@ export const signinUser = async (userData: FieldValues) => {
 };
 
 export const signout = async () => {
-  const cookieStore = await cookies();
-  cookieStore.delete("accessToken");
-  cookieStore.delete("refreshToken");
+  try {
+    const cookieStore = await cookies();
+    cookieStore.delete("accessToken");
+    cookieStore.delete("refreshToken");
+
+    const { data } = await axiosInstance.post("/auth/signout");
+
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
 };
 
 export const getCurrentUser = async () => {
