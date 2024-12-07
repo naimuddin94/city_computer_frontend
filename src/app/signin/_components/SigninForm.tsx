@@ -6,6 +6,7 @@ import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUser } from "@/context/user.provider";
+import { defaultValues } from "@/fakeData";
 import { AuthSchema } from "@/schema/auth.schema";
 import { signinUser } from "@/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,12 +15,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
-
-//! This is for development
-const defaultValues = {
-  email: "jhon@gmail.com",
-  password: "password123",
-};
 
 const SigninForm = () => {
   const [showPassword, setShowPassword] = useState(false);

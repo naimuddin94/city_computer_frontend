@@ -21,20 +21,11 @@ const createSchema = z.object({
       .nonnegative({ message: "Stock must be a non-negative value" })
   ),
 
-  discount: z.preprocess(
-    (val) =>
-      val !== "" && val !== undefined ? parseFloat(val as string) : undefined,
-    z.number().min(0).max(100).optional()
-  ),
-
   description: z
-    .string()
-    .max(500, { message: "Description must be under 500 characters" })
-    .optional(),
+    .string({ required_error: "Description is required" })
+    .max(500, { message: "Description must be under 500 characters" }),
 
-  category: z
-    .string({ required_error: "Category ID is required" })
-    .uuid({ message: "Category ID must be a valid UUID" }),
+  category: z.string({ required_error: "Category is required" }).optional(),
 });
 
 export const ProductSchema = {

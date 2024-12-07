@@ -46,7 +46,6 @@ const SignupForm = () => {
 
     try {
       const res = await signupUser(formData);
-      console.log(res);
       if (res?.success) {
         toast.success(res.message);
         setUser(res.data);

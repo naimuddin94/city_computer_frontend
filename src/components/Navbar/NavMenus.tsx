@@ -1,6 +1,12 @@
 "use client";
 
-import { adminNavItems, navItem, userNavItems } from "@/utils/navItems";
+import { useUser } from "@/context/user.provider";
+import {
+  adminNavItems,
+  navItem,
+  userNavItems,
+  vendorNavItems,
+} from "@/utils/navItems";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -14,20 +20,19 @@ import {
 } from "../ui/navigation-menu";
 import { ListItem } from "./ListItem";
 
-const user = {
-  role: "admin",
-};
-
 const NavMenus = () => {
   const pathname = usePathname();
+  const { user } = useUser();
   const [menus, setMenus] = useState<navItem[]>(userNavItems);
   useEffect(() => {
     if (user?.role === "admin") {
       setMenus(adminNavItems);
+    } else if (user?.role === "vendor") {
+      setMenus(vendorNavItems);
     } else {
       setMenus(userNavItems);
     }
-  }, []);
+  }, [user]);
   return (
     <ul className="items-center gap-5 py-3">
       <NavigationMenu>
