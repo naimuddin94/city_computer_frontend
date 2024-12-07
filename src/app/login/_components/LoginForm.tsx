@@ -39,7 +39,6 @@ const LoginForm = () => {
   const onSubmit = async (data: FieldValues) => {
     try {
       const res = await signinUser(data);
-      console.log(res);
       if (res?.success) {
         toast.success(res.message);
         setUser(res.data);
@@ -51,8 +50,8 @@ const LoginForm = () => {
       } else if (!res?.success) {
         toast.error(res.message);
       }
-    } catch (error) {
-      console.log(error);
+    } catch {
+      toast.error("Something went wrong during login!");
     } finally {
       setIsLoading(false);
     }

@@ -11,7 +11,7 @@ import { toast } from "sonner";
 export const signupUser = async (userData: FieldValues) => {
   try {
     const cookieStore = await cookies();
-    const { data } = await axiosInstance.post("/auth/signin", userData);
+    const { data } = await axiosInstance.post("/auth/signup", userData);
 
     if (data?.success) {
       cookieStore.set("accessToken", data?.data?.accessToken);

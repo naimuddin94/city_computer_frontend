@@ -5,28 +5,67 @@ import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useUser } from "@/context/user.provider";
 import { AuthSchema } from "@/schema/auth.schema";
+import { signupUser } from "@/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LucideEye, LucideEyeOff } from "lucide-react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const redirect = searchParams.get("redirect");
+
+  const { setUser } = useUser();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(AuthSchema.registerSchema) });
 
-  const onsubmit = async (data: FieldValues) => {
-    console.log(data);
+  const onSubmit = async (data: FieldValues) => {
+    const { files, ...remainData } = data;
+    const formData = new FormData();
+
+    // Append form fields except the file
+    Object.entries(remainData).forEach(([key, value]) => {
+      formData.append(key, value as string);
+    });
+
+    // Append the first file if available
+    if (files && files[0]) {
+      formData.append("image", files[0]);
+    }
+
+    try {
+      const res = await signupUser(formData);
+      console.log(res);
+      if (res?.success) {
+        toast.success(res.message);
+        setUser(res.data);
+        if (redirect) {
+          router.push(redirect);
+        } else {
+          router.push("/");
+        }
+      } else if (!res?.success) {
+        toast.error(res.message);
+      }
+    } catch {
+      toast.error("Something went wrong during register!");
+    }
   };
   return (
     <>
       {isSubmitting && <Loading />}
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
