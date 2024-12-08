@@ -1,10 +1,10 @@
 //! This is for development // signinForm: 34
 export const defaultValues = {
-  email: "jhon@gmail.com",
+  email: "habib@gmail.com",
   password: "password123",
 };
 
-//! This is for testing 
+//! This is for testing
 export const frameworks = [
   { value: "next.js", label: "Next.js" },
   { value: "sveltekit", label: "SvelteKit" },

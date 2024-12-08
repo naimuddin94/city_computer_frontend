@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Loading from "../shared/Loading";
 import { Form } from "../ui/form";
@@ -38,6 +39,12 @@ export default function CTForm({
   const methods = useForm(formConfig);
 
   const submitHandler = methods.handleSubmit;
+
+  useEffect(() => {
+    methods.reset();
+  }, [methods.formState.isSubmitSuccessful]);
+
+  console.log("rendering...ct form");
 
   return (
     <>

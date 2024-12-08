@@ -36,7 +36,7 @@ const CTInput = ({
         placeholder={placeholder}
       />
       {errors[name] && (
-        <span className="text-theme text-xs">
+        <span className="text-primary text-xs">
           {errors[name].message as string}
         </span>
       )}

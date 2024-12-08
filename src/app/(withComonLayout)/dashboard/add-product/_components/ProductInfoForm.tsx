@@ -12,12 +12,10 @@ import {
 } from "@/components/ui/card";
 
 interface IProps {
-  category: string;
-  setCategory: (value: string) => void;
   categories: { categoryId: string; name: string }[];
 }
 
-const ProductInfoForm = ({ category, setCategory, categories }: IProps) => {
+const ProductInfoForm = ({ categories }: IProps) => {
   const options = categories.map((category) => ({
     label: category.name,
     value: category.categoryId,
@@ -41,8 +39,6 @@ const ProductInfoForm = ({ category, setCategory, categories }: IProps) => {
             />
             <div className="grid sm:grid-cols-2 gap-2">
               <CTSearchSelect
-                value={category}
-                setValueState={setCategory}
                 options={options}
                 name="category"
                 label="Category"

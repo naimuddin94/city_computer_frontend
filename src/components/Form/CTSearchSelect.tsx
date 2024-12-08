@@ -16,38 +16,34 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Check, ChevronsUpDown } from "lucide-react";
-import * as React from "react";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface IProps {
   label: string;
   name: string;
   placeholder: string;
-  value: string;
-  setValueState: (value: string) => void;
   options: { value: string; label: string }[];
   required?: boolean;
 }
 
-const CTSearchSelect = ({
-  label,
-  name,
-  options,
-  placeholder,
-  value,
-  setValueState,
-}: IProps) => {
+const CTSearchSelect = ({ label, name, options, placeholder }: IProps) => {
   const {
     setValue,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
   } = useFormContext();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [value, setValueState] = useState<string>("");
 
   const handleSelect = (selectedValue: string) => {
     setValueState(selectedValue);
     setValue(name, selectedValue);
     setOpen(false);
   };
+
+  useEffect(() => {
+    setValueState("");
+  }, [isSubmitSuccessful]);
 
   return (
     <div className="grid gap-2">
@@ -93,7 +89,7 @@ const CTSearchSelect = ({
         </PopoverContent>
       </Popover>
       {errors[name] && (
-        <span className="text-theme text-xs">
+        <span className="text-primary text-xs">
           {errors[name]?.message as string}
         </span>
       )}
