@@ -44,8 +44,6 @@ export default function CTForm({
     methods.reset();
   }, [methods.formState.isSubmitSuccessful]);
 
-  console.log("rendering...ct form");
-
   return (
     <>
       {methods.formState.isSubmitting && <Loading />}

@@ -1,17 +1,21 @@
+"use server";
+
 import { getCurrentUser } from "@/services/AuthService";
 import { redirect } from "next/navigation";
+import AddCategory from "./_components/AddCategory";
 
-const AddCategory = async () => {
+async function AddCategoryPage() {
   const user = await getCurrentUser();
 
   if (!user) {
-    return redirect("/signin?redirect=dashboard/admin/add-category");
+    return redirect("/signin?redirect=/dashboard/admin/add-category");
   }
+
   return (
-    <div>
-      <h1>This is category page component</h1>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-8 justify-center">
+      <AddCategory />
     </div>
   );
-};
+}
 
-export default AddCategory;
+export default AddCategoryPage;
