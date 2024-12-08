@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
-import { envConfig } from "@/config";
 import axiosInstance from "@/lib/axiosInstance";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import { ITokenUser } from "@/types";
+import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
-import { toast } from "sonner";
 
 export const signupUser = async (userData: FieldValues) => {
   try {
@@ -61,22 +60,18 @@ export const getCurrentUser = async () => {
   let decodedToken = null;
 
   if (accessToken) {
-    try {
-      decodedToken = jwt.verify(
-        accessToken,
-        envConfig.access_token_secret as string
-      ) as JwtPayload;
+    decodedToken = (await jwtDecode(accessToken)) as ITokenUser;
 
-      return {
-        userId: decodedToken.id as string,
-        email: decodedToken.email as string,
-        image: decodedToken.image as string,
-        role: decodedToken.role as string,
-      };
-    } catch {
-      toast.error("Something went wrong decoding access token");
-      return null;
-    }
+    const { data } = await axiosInstance.get(
+      `/auth/get-role/${decodedToken.userId}`
+    );
+
+    return {
+      userId: decodedToken.userId as string,
+      email: decodedToken.email as string,
+      image: decodedToken.image as string,
+      role: data.data.role as string,
+    };
   }
 
   return decodedToken;

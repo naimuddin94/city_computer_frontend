@@ -9,8 +9,15 @@ export interface IUser {
   image?: string;
 }
 
-export interface IInputProps{
+export interface IInputProps {
   name: string;
   label: string;
   placeholder: string;
+}
+
+export interface ITokenUser {
+  userId: string;
+  email: string;
+  role: string;
+  image?: string;
 }

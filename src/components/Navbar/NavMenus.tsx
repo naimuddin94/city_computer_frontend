@@ -4,6 +4,7 @@ import { useUser } from "@/context/user.provider";
 import {
   adminNavItems,
   navItem,
+  unauthenticatedNavItems,
   userNavItems,
   vendorNavItems,
 } from "@/utils/navItems";
@@ -23,14 +24,16 @@ import { ListItem } from "./ListItem";
 const NavMenus = () => {
   const pathname = usePathname();
   const { user } = useUser();
-  const [menus, setMenus] = useState<navItem[]>(userNavItems);
+  const [menus, setMenus] = useState<navItem[]>(unauthenticatedNavItems);
   useEffect(() => {
     if (user?.role === "admin") {
       setMenus(adminNavItems);
     } else if (user?.role === "vendor") {
       setMenus(vendorNavItems);
-    } else {
+    } else if (user?.role === "user") {
       setMenus(userNavItems);
+    } else {
+      setMenus(unauthenticatedNavItems);
     }
   }, [user]);
   return (

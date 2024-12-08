@@ -20,22 +20,22 @@ export const adminNavItems: navItem[] = [
     children: [
       {
         title: "Add Category",
-        href: "/dashboard/add-category",
+        href: "/dashboard/admin/add-category",
         description: "Add a new category to your store.",
       },
       {
         title: "Manage Product",
-        href: "/dashboard/manage-product",
+        href: "/dashboard/admin/manage-product",
         description: "Edit or remove existing products.",
       },
       {
         title: "Reviews",
-        href: "/dashboard/reviews",
+        href: "/dashboard/admin/reviews",
         description: "Read and respond to customer reviews.",
       },
       {
         title: "Orders",
-        href: "/dashboard/my-orders",
+        href: "/dashboard/admin/my-orders",
         description: "Track your order history and status.",
       },
     ],
@@ -64,22 +64,22 @@ export const vendorNavItems: navItem[] = [
     children: [
       {
         title: "Add Product",
-        href: "/dashboard/add-product",
+        href: "/dashboard/vendor/add-product",
         description: "Add a new product to your store.",
       },
       {
         title: "Manage Product",
-        href: "/dashboard/manage-product",
+        href: "/dashboard/vendor/manage-product",
         description: "Edit or remove existing products.",
       },
       {
         title: "Orders",
-        href: "/dashboard/my-orders",
+        href: "/dashboard/vendor/my-orders",
         description: "Track your order history and status.",
       },
       {
         title: "Reviews",
-        href: "/dashboard/reviews",
+        href: "/dashboard/vendor/reviews",
         description: "Read and respond to customer reviews.",
       },
     ],
@@ -127,6 +127,25 @@ export const userNavItems: navItem[] = [
         description: "Rate and review purchased products.",
       },
     ],
+  },
+  {
+    label: "About Us",
+    href: "/about-us",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact-us",
+  },
+];
+
+export const unauthenticatedNavItems: navItem[] = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Products",
+    href: "/products",
   },
   {
     label: "About Us",

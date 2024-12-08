@@ -35,7 +35,7 @@ const createSchema = z.object({
   description: z
     .string({ required_error: "Description is required" })
     .min(30, { message: "Description must be at least 30 characters long" })
-    .max(500, { message: "Description must be under 500 characters" }),
+    .max(50000, { message: "Description must be under 50k characters" }),
 
   category: z.string({ required_error: "Category is required" }),
 });
