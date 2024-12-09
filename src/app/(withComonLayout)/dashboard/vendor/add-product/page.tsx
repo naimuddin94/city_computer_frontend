@@ -1,4 +1,4 @@
-import { api_url } from "@/constant";
+import { apiFetch } from "@/lib/fetch";
 import { getCurrentUser } from "@/services/AuthService";
 import { redirect } from "next/navigation";
 import ProductForm from "./_components/ProductForm";
@@ -10,11 +10,20 @@ async function AddProduct() {
     return redirect("/signin?redirect=dashboard/vendor/add-product");
   }
 
-  const res = await fetch(`${api_url}/categories`, {
+  const data = await apiFetch("/categories", {
     cache: "force-cache",
+    next: {
+      tags: ["categories"],
+    },
   });
 
-  const { data } = await res.json();
+  const shop = await apiFetch("/shops/get-shop-info", {
+    cache: "no-store",
+  });
+
+  if (!shop.data) {
+    return redirect("/dashboard/vendor/create-shop");
+  }
 
   return (
     <section className="grid gap-6 px-4 py-8 mx-auto max-w-4xl sm:px-6 lg:px-8">
@@ -23,7 +32,7 @@ async function AddProduct() {
           Add New Product
         </h1>
       </div>
-      <ProductForm categories={data} />
+      <ProductForm categories={data?.data} />
     </section>
   );
 }

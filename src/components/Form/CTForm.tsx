@@ -16,6 +16,7 @@ interface formConfig {
 interface IProps extends formConfig {
   children: ReactNode;
   onSubmit: SubmitHandler<any>;
+  className?: string;
 }
 
 export default function CTForm({

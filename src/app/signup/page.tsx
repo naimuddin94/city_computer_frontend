@@ -19,7 +19,7 @@ const SignupPage = () => {
         {/* Card with higher z-index */}
         <Card className="p-6 max-w-md shadow-none relative z-20">
           <CardTitle className="text-2xl font-semibold text-primary">
-            Create an Account as
+            Create an account as
           </CardTitle>
           <CardDescription className="text-gray-600 mt-2">
             Select the type of account you want to register. Choose Customer to

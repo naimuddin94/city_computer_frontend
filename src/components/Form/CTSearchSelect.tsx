@@ -19,11 +19,16 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
+interface IOption {
+  value: string;
+  label: string;
+}
+
 interface IProps {
   label: string;
   name: string;
   placeholder: string;
-  options: { value: string; label: string }[];
+  options: IOption[];
   required?: boolean;
 }
 
@@ -71,7 +76,7 @@ const CTSearchSelect = ({ label, name, options, placeholder }: IProps) => {
                 {options.map((option) => (
                   <CommandItem
                     key={option.value}
-                    value={option.value}
+                    value={option.label}
                     onSelect={() => handleSelect(option.value)}
                   >
                     {option.label}

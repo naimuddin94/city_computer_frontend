@@ -38,12 +38,6 @@ const ProductInfoForm = ({ categories }: IProps) => {
               placeholder="Write here product description"
             />
             <div className="grid sm:grid-cols-2 gap-2">
-              <CTSearchSelect
-                options={options}
-                name="category"
-                label="Category"
-                placeholder="Select category"
-              />
               <CTInput
                 label="Price"
                 name="price"
@@ -53,6 +47,12 @@ const ProductInfoForm = ({ categories }: IProps) => {
                 label="Stock"
                 name="stock"
                 placeholder="Enter product stock"
+              />
+              <CTSearchSelect
+                options={options}
+                name="category"
+                label="Category"
+                placeholder="Select category"
               />
             </div>
           </div>

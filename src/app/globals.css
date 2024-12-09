@@ -81,12 +81,6 @@ body {
   }
 }
 
-/* Ensure that the Link elements are clickable */
-a {
-  pointer-events: auto;
-}
-
-
 .animate-slow-spin {
   animation: slow-spin 7s linear infinite;
 }
