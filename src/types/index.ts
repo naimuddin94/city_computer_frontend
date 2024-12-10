@@ -54,6 +54,7 @@ export interface IShop {
   name: string;
   description: string;
   logo: string;
+  address: string;
 }
 
 export interface IProduct {

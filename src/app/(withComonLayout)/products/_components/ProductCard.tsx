@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -29,13 +30,15 @@ function ProductCard({ product }: { product: IProduct }) {
         <CardContent className="p-6 space-y-4 flex-1 flex flex-col justify-between">
           <div className="space-y-2">
             <div className="flex items-center justify-end gap-3">
-              {category.name}
+              <Badge variant="outline">{category.name}</Badge>
             </div>
             <CardTitle className="text-xl font-bold">{name}</CardTitle>
             <CardDescription className="text-muted-foreground text-justify">
               {truncate(description, 7)}
             </CardDescription>
-            <CardTitle className="text-md font-semibold">{shop.name}</CardTitle>
+            <CardTitle className="text-md font-semibold hover:underline">
+              {shop.name}
+            </CardTitle>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold">${price}</span>
