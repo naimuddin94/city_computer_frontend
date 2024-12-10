@@ -48,3 +48,31 @@ export interface IGetCategoriesProps {
   page: number;
   limit: number;
 }
+
+export interface IShop {
+  shopId: string;
+  name: string;
+  description: string;
+  logo: string;
+}
+
+export interface IProduct {
+  productId: string;
+  name: string;
+  price: number;
+  stock: number;
+  image: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  category: ICategory;
+  shop: IShop;
+}
+
+export interface IFilterOptions {
+  page?: string;
+  limit?: string;
+  searchTerm?: string;
+  fields?: string;
+  sort?: string;
+}

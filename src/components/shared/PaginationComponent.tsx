@@ -27,6 +27,7 @@ function PaginationComponent({
   };
 
   const renderPaginationItems = () => {
+    console.log("from pagination: ", meta?.totalPages);
     const items = [];
     if (meta?.totalPages <= 3) {
       // Show all pages if total pages are 3 or less
@@ -45,7 +46,7 @@ function PaginationComponent({
     } else {
       // Show first, current, and last pages with ellipsis if total pages are more than 3
       items.push(
-        <PaginationItem key={1}>
+        <PaginationItem key={Math.random().toString(36).substr(2, 9)}>
           <PaginationLink
             isActive={1 === currentPage}
             onClick={() => handlePageChange(1)}
@@ -57,7 +58,7 @@ function PaginationComponent({
 
       if (currentPage > 2) {
         items.push(
-          <PaginationItem key="start-ellipsis">
+          <PaginationItem key={`start-ellipsis-${currentPage}`}>
             <PaginationEllipsis />
           </PaginationItem>
         );
@@ -78,7 +79,7 @@ function PaginationComponent({
 
       if (currentPage < meta.totalPages - 1) {
         items.push(
-          <PaginationItem key="end-ellipsis">
+          <PaginationItem key={`end-ellipsis-${currentPage}`}>
             <PaginationEllipsis />
           </PaginationItem>
         );
