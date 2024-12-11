@@ -12,11 +12,6 @@ import CartButton from "./CartButton";
 import Logo from "./Logo";
 import NavMenus from "./NavMenus";
 
-//! This is fake data remove after connect API
-const cart = {
-  products: [],
-};
-
 interface IProps {
   screenY: number;
 }

@@ -71,7 +71,7 @@ body {
 
 @layer components {
   .text-gradient{
-    @apply  bg-gradient-to-tr from-[#C70039] to-[#581845] inline-block text-transparent bg-clip-text;
+    @apply  bg-gradient-to-tr from-[#C70039] to-[#581845]  text-transparent bg-clip-text;
   }
 }
 

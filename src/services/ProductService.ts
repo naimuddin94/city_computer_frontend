@@ -42,3 +42,12 @@ export const saveProduct = async (productData: FormData) => {
     return error?.response?.data;
   }
 };
+
+export const getProductsFromMeli = async (searchTerm: string) => {
+  try {
+    const data = await apiFetch(`/meilisearch?searchTerm=${searchTerm}`);
+    return data?.data?.hits;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};
