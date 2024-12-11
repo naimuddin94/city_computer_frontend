@@ -1,15 +1,14 @@
 "use client";
 
-import logo from "@/assets/images/logo.png";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/user.provider";
 import { signout } from "@/services/AuthService";
 import { ShoppingCart } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
 import Container from "../shared/Container";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import Logo from "./Logo";
 import NavMenus from "./NavMenus";
 
 //! This is fake data remove after connect API
@@ -34,10 +33,7 @@ const DesktopNavSection = () => {
   return (
     <Container>
       <nav className="hidden lg:flex justify-between items-center">
-        <div className="flex items-center">
-          <Image src={logo} alt="Logo image" width={48} height={48} />
-          <h3 className="text-xl font-bold text-slate-700">City Computers</h3>
-        </div>
+        <Logo />
         <div>
           <NavMenus />
         </div>

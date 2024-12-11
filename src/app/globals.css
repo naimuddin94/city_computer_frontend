@@ -7,6 +7,12 @@ body {
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -63,12 +69,9 @@ body {
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
+@layer components {
+  .text-gradient{
+    @apply  bg-gradient-to-tr from-[#C70039] to-[#581845] inline-block text-transparent bg-clip-text;
   }
 }
 
@@ -79,6 +82,10 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.mask-parallelogram-4 {
+  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
 }
 
 .animate-slow-spin {
