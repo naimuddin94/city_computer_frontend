@@ -9,10 +9,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { handleLogout } from "@/helper/auth";
-import { MenuIcon, ShoppingCart } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import Container from "../shared/Container";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import CartButton from "./CartButton";
 import Logo from "./Logo";
 import NavMenus from "./NavMenus";
 
@@ -22,11 +23,12 @@ const user = {
   image: "",
   name: "user",
 };
-const cart = {
-  products: [],
-};
 
-const MobileNavSection = () => {
+interface IProps {
+  screenY: number;
+}
+
+const MobileNavSection = ({ screenY }: IProps) => {
   return (
     <Container className="py-2 lg:py-0 flex justify-between">
       <Sheet>
@@ -62,20 +64,7 @@ const MobileNavSection = () => {
         <div className="lg:hidden flex items-center gap-5">
           {user ? (
             <>
-              <Link href="/dashboard/carts">
-                <div className="relative">
-                  <Button variant="ghost">
-                    <ShoppingCart size={20} />
-                  </Button>
-                  <span
-                    className={`absolute ${
-                      cart?.products?.length > 9 ? "right-0" : "right-2"
-                    }`}
-                  >
-                    {cart?.products?.length}
-                  </span>
-                </div>
-              </Link>
+              <CartButton screenY={screenY} />
               <Avatar>
                 <AvatarImage src={user?.image} alt="user" />
                 <AvatarFallback>U</AvatarFallback>

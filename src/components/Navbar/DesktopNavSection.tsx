@@ -3,11 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/user.provider";
 import { signout } from "@/services/AuthService";
-import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { toast } from "sonner";
 import Container from "../shared/Container";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import CartButton from "./CartButton";
 import Logo from "./Logo";
 import NavMenus from "./NavMenus";
 
@@ -16,7 +17,12 @@ const cart = {
   products: [],
 };
 
-const DesktopNavSection = () => {
+interface IProps {
+  screenY: number;
+}
+
+const DesktopNavSection = ({ screenY }: IProps) => {
+  const pathname = usePathname();
   const { user, isLoading, setIsLoading } = useUser();
 
   const handleSignout = async () => {
@@ -33,27 +39,18 @@ const DesktopNavSection = () => {
   return (
     <Container>
       <nav className="hidden lg:flex justify-between items-center">
-        <Logo />
+        <Logo
+          textColor={pathname === "/" && screenY < 500 ? "text-white" : ""}
+        />
         <div>
-          <NavMenus />
+          <NavMenus
+            textColor={pathname === "/" && screenY < 500 ? "text-white" : ""}
+          />
         </div>
         <div className="flex items-center gap-5">
           {user && !isLoading ? (
             <>
-              <Link href="/dashboard/carts">
-                <div className="relative">
-                  <Button variant="ghost">
-                    <ShoppingCart size={20} />
-                  </Button>
-                  <span
-                    className={`absolute ${
-                      cart.products.length > 9 ? "right-0" : "right-2"
-                    }`}
-                  >
-                    {cart.products.length}
-                  </span>
-                </div>
-              </Link>
+              <CartButton screenY={screenY} />
               <Button onClick={handleSignout} variant="outline">
                 Logout
               </Button>

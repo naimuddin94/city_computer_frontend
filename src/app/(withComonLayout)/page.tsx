@@ -8,7 +8,7 @@ import WhyUs from "@/components/module/home/WhyUs";
 
 export default function Home() {
   return (
-    <section>
+    <section className="-mt-[3.8rem]">
       <Banner />
       <Advantage />
       <Category />

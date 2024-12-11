@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@/context/user.provider";
+import { cn } from "@/lib/utils";
 import {
   adminNavItems,
   navItem,
@@ -21,10 +22,15 @@ import {
 } from "../ui/navigation-menu";
 import { ListItem } from "./ListItem";
 
-const NavMenus = () => {
+interface IProps {
+  textColor?: string;
+}
+
+const NavMenus = ({ textColor }: IProps) => {
   const pathname = usePathname();
   const { user } = useUser();
   const [menus, setMenus] = useState<navItem[]>(unauthenticatedNavItems);
+
   useEffect(() => {
     if (user?.role === "admin") {
       setMenus(adminNavItems);
@@ -37,7 +43,7 @@ const NavMenus = () => {
     }
   }, [user]);
   return (
-    <ul className="items-center gap-5 py-3">
+    <ul className={cn("items-center gap-5 py-3", textColor)}>
       <NavigationMenu>
         <NavigationMenuItem className="flex flex-col lg:flex-row">
           {menus?.map((menu) => {

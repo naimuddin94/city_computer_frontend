@@ -1,21 +1,21 @@
 "use client";
 import Image from "next/image";
 import {
+  A11y,
+  Autoplay,
   Navigation,
   Pagination,
   Scrollbar,
-  A11y,
-  Autoplay,
 } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
+import bannerData from "@/lib/bannerData";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import bannerData from "@/lib/bannerData";
 
 const Banner = () => {
   return (
@@ -35,7 +35,6 @@ const Banner = () => {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
         >
           {bannerData?.map((data) => (
             <SwiperSlide key={data.heading}>
