@@ -27,7 +27,6 @@ function PaginationComponent({
   };
 
   const renderPaginationItems = () => {
-    console.log("from pagination: ", meta?.totalPages);
     const items = [];
     if (meta?.totalPages <= 3) {
       // Show all pages if total pages are 3 or less

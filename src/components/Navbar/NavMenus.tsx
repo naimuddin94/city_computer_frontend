@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "@/context/user.provider";
+import { useUser } from "@/context/user.context";
 import { cn } from "@/lib/utils";
 import {
   adminNavItems,

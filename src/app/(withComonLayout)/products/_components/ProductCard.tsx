@@ -1,5 +1,5 @@
+import AddToCart from "@/components/shared/AddToCart";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -42,9 +42,7 @@ function ProductCard({ product }: { product: IProduct }) {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold">${price}</span>
-            <Button type="submit" variant="outline">
-              Add to Cart
-            </Button>
+            <AddToCart product={product} />
           </div>
         </CardContent>
       </Card>

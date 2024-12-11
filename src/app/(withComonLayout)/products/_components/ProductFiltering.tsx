@@ -34,6 +34,8 @@ const ProductFiltering = () => {
   const [sort, setSort] = useState("");
   const [page, setPage] = useState(1);
 
+  console.log(limit);
+
   // Research the search
   const [products, setProducts] = useState<IProduct[]>([]);
   const [meta, setMeta] = useState<IMeta | null>(null);
@@ -103,15 +105,15 @@ const ProductFiltering = () => {
                   <div className="grid gap-2">
                     <Label className="flex items-center gap-2">
                       <Checkbox value="Electronics" />
-                      Electronics
+                      Computer
                     </Label>
                     <Label className="flex items-center gap-2">
                       <Checkbox value="Bags" />
-                      Bags
+                      CC Camera
                     </Label>
                     <Label className="flex items-center gap-2">
                       <Checkbox value="Outdoor" />
-                      Outdoor
+                      Top Product
                     </Label>
                     <Label className="flex items-center gap-2">
                       <Checkbox value="Accessories" />

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useUser } from "@/context/user.provider";
+import { useUser } from "@/context/user.context";
 import { signout } from "@/services/AuthService";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

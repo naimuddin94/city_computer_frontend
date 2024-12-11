@@ -26,6 +26,36 @@ export const getProducts = async (params: IFilterOptions) => {
   }
 };
 
+export const getProductsByIds = async (productIds: string[]) => {
+  try {
+    // Map over the productIds and create an array of fetch promises
+    const productPromises = productIds.map((id) =>
+      apiFetch(`/products/${id}`, {
+        cache: "force-cache",
+        next: {
+          tags: ["cart-products"],
+        },
+      })
+    );
+
+    const productResponses = await Promise.all(productPromises);
+
+    // Extract the data for each product from the response
+    const products = productResponses
+      .map((response) => {
+        if (response.success) {
+          return response.data;
+        }
+        return null;
+      })
+      .filter((product) => product !== null);
+
+    return products;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};
+
 export const saveProduct = async (productData: FormData) => {
   try {
     const data = await apiFetch("/products", {

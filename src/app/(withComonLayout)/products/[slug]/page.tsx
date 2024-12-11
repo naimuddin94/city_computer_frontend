@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { apiFetch } from "@/lib/fetch";
 import { IProduct, IResponse } from "@/types";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 type Params = Promise<{ slug: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -22,6 +23,10 @@ const ProductDetailPage = async (props: IProps) => {
 
   const product = res.data;
 
+  if (!product) {
+    return redirect("/");
+  }
+
   return (
     <Container className="py-8 max-w-6xl">
       <div className="grid md:grid-cols-2 gap-8">
@@ -29,7 +34,7 @@ const ProductDetailPage = async (props: IProps) => {
           <Image
             width={800}
             height={600}
-            src={product.image}
+            src={product?.image}
             alt="Product Image"
             className="w-full rounded-lg object-cover aspect-[4/3]"
           />
@@ -37,9 +42,11 @@ const ProductDetailPage = async (props: IProps) => {
         <div className="grid gap-4">
           <div className="space-y-2">
             <div className="flex justify-between items-start">
-              <h1 className="text-3xl font-bold">{product.name}</h1>
+              <h1 className="text-3xl font-bold">{product?.name}</h1>
             </div>
-            <p className="text-2xl font-bold text-primary">$ {product.price}</p>
+            <p className="text-2xl font-bold text-primary">
+              $ {product?.price}
+            </p>
 
             <Button size="lg" className="mt-4">
               Add to Cart

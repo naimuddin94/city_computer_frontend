@@ -22,7 +22,9 @@ const ProductSearch = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const { register, watch } = useForm();
 
-  const searchTerm = useDebounce(watch("search"));
+  const searchTerm = useDebounce(watch("search"), 100) || "";
+
+  console.log({ searchTerm });
 
   const fetchProducts = async () => {
     const data = await getProductsFromMeli(searchTerm);
@@ -30,7 +32,7 @@ const ProductSearch = () => {
   };
 
   useEffect(() => {
-    if (searchTerm) {
+    if (searchTerm && searchTerm.trim().length > 0) {
       fetchProducts();
     }
   }, [searchTerm]);
@@ -38,7 +40,7 @@ const ProductSearch = () => {
   console.log({ products });
 
   return (
-    <div className="flex flex-col justify-center pb-8 pt-2 max-w-fit mx-auto">
+    <div className="flex flex-col justify-center pb-8 pt-2 max-w-fit mx-auto relative">
       <form>
         <Input
           {...register("search")}
@@ -48,30 +50,36 @@ const ProductSearch = () => {
         />
       </form>
 
-      {products.length > 0 && (
-        <ScrollArea className="h-72 max-w-sm w-[23rem] rounded-md border">
-          <div className="p-4">
-            {products.map((product) => (
-              <Link href={`/products/${product.id}`} key={product.id}>
-                <div className="flex gap-4">
-                  <Image
-                    src={product.thumbnail}
-                    alt="product image"
-                    width={50}
-                    height={50}
-                    className="rounded"
-                  />
-                  <div>
-                    <h3>{product.name}</h3>
-                    <h5>{product.shop}</h5>
+      <div
+        className={`absolute top-12 bg-white ${
+          searchTerm.trim().length <= 0 && "hidden"
+        }`}
+      >
+        {products.length > 0 && (
+          <ScrollArea className="h-72 max-w-sm w-[23rem] rounded-md border">
+            <div className="p-4">
+              {products.map((product) => (
+                <Link href={`/products/${product.id}`} key={product.id}>
+                  <div className="flex gap-4 hover:bg-slate-100 px-4 py-2">
+                    <Image
+                      src={product.thumbnail}
+                      alt="product image"
+                      width={50}
+                      height={50}
+                      className="rounded"
+                    />
+                    <div>
+                      <h3>{product.name}</h3>
+                      <h5>{product.shop}</h5>
+                    </div>
                   </div>
-                </div>
-                <Separator className="my-2" />
-              </Link>
-            ))}
-          </div>
-        </ScrollArea>
-      )}
+                  <Separator className="my-2" />
+                </Link>
+              ))}
+            </div>
+          </ScrollArea>
+        )}
+      </div>
     </div>
   );
 };
