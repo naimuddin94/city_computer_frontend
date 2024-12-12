@@ -78,3 +78,35 @@ export interface IFilterOptions {
   fields?: string;
   sort?: string;
 }
+
+export interface IMyOrders {
+  orderId: string;
+  address: string;
+  phone: string;
+  totalAmount: number;
+  status: string;
+  paymentId: string;
+  createdAt: string;
+  orderItems: IOrderItem[];
+}
+
+export interface IOrderItem {
+  orderItemId: string;
+  quantity: number;
+  price: number;
+  product: Pick<IProduct, "productId" | "image" | "name" | "price" | "shop">;
+}
+
+export interface IOrderItemType {
+  productId: string;
+  quantity: number;
+  coupon?: string;
+}
+
+export interface IOrderData {
+  address: string;
+  phone: string;
+  paymentInfo: string;
+  payAmount: number;
+  orderItems: IOrderItemType[];
+}

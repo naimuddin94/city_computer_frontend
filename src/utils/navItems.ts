@@ -113,12 +113,12 @@ export const userNavItems: navItem[] = [
       },
       {
         title: "My Orders",
-        href: "/dashboard/my-orders",
+        href: "/my-orders",
         description: "Track your order history and status.",
       },
       {
         title: "Carts",
-        href: "/dashboard/carts",
+        href: "/carts",
         description: "View items in your shopping cart.",
       },
       {

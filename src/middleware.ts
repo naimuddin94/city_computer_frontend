@@ -18,6 +18,7 @@ export async function middleware(request: NextRequest) {
 
   const user = await getCurrentUser();
 
+  // If the user is not signed in
   if (!user) {
     if (AuthRoutes.includes(pathname)) {
       return NextResponse.next();
@@ -28,6 +29,13 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Allow all authenticated users to access these routes
+  const publicAuthRoutes = ["/carts", "/checkout", "/payment"];
+  if (publicAuthRoutes.includes(pathname)) {
+    return NextResponse.next();
+  }
+
+  // Role-based route access
   if (user?.role && roleBasedRoutes[user?.role as Role]) {
     const routes = roleBasedRoutes[user?.role as Role];
 
@@ -41,5 +49,13 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/profile/:page*", "/dashboard/:page*", "/signin", "/signup"],
+  matcher: [
+    "/profile/:page*",
+    "/dashboard/:page*",
+    "/signin",
+    "/signup",
+    "/carts",
+    "/checkout",
+    "/payment",
+  ],
 };
