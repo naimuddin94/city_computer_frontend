@@ -24,8 +24,6 @@ const ProductSearch = () => {
 
   const searchTerm = useDebounce(watch("search"), 100) || "";
 
-  console.log({ searchTerm });
-
   const fetchProducts = async () => {
     const data = await getProductsFromMeli(searchTerm);
     setProducts(data);

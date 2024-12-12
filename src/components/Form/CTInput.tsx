@@ -10,6 +10,8 @@ interface IProps {
   name: string;
   required?: boolean;
   type?: string;
+  className?: string;
+  withoutLabel?: boolean;
 }
 
 const CTInput = ({
@@ -18,6 +20,8 @@ const CTInput = ({
   placeholder,
   required = true,
   type = "text",
+  className,
+  withoutLabel = false,
 }: IProps) => {
   const {
     register,
@@ -26,7 +30,7 @@ const CTInput = ({
 
   return (
     <div className="grid gap-2">
-      <Label htmlFor={name}>{label}</Label>
+      {!withoutLabel && <Label htmlFor={name}>{label}</Label>}
       <Input
         {...register(name, {
           required,
@@ -34,6 +38,7 @@ const CTInput = ({
         id={name}
         type={type}
         placeholder={placeholder}
+        className={className}
       />
       {errors[name] && (
         <span className="text-primary text-xs">

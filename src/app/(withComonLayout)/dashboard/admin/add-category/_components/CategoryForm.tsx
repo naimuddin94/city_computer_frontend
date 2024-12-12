@@ -13,7 +13,7 @@ interface IProps {
 
 const CategoryForm = ({ handleAddCategory }: IProps) => {
   return (
-    <div className="p-6 flex flex-col items-end">
+    <div className="p-6 flex flex-col md:items-end">
       <h2 className="text-2xl font-bold mb-4 text-primary">Add Category</h2>
       <Card className="p-5 w-10/12">
         <CardContent>

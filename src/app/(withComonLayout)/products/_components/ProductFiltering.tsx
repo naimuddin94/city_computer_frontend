@@ -34,8 +34,6 @@ const ProductFiltering = () => {
   const [sort, setSort] = useState("");
   const [page, setPage] = useState(1);
 
-  console.log(limit);
-
   // Research the search
   const [products, setProducts] = useState<IProduct[]>([]);
   const [meta, setMeta] = useState<IMeta | null>(null);

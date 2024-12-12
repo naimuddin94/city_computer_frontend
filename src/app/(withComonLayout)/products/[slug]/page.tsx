@@ -1,5 +1,5 @@
+import AddToCart from "@/components/shared/AddToCart";
 import Container from "@/components/shared/Container";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { apiFetch } from "@/lib/fetch";
 import { IProduct, IResponse } from "@/types";
@@ -48,9 +48,7 @@ const ProductDetailPage = async (props: IProps) => {
               $ {product?.price}
             </p>
 
-            <Button size="lg" className="mt-4">
-              Add to Cart
-            </Button>
+            <AddToCart product={product} variant="default" />
           </div>
           <Tabs defaultValue="specification">
             <TabsList className="border-b">

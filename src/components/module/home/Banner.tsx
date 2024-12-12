@@ -36,7 +36,6 @@ const Banner = () => {
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             {bannerData?.map((data) => (
               <SwiperSlide key={data.heading}>

@@ -1,15 +1,27 @@
 "use client";
 
 import { useCart } from "@/context/cart.context";
+import { useUser } from "@/context/user.context";
 import { IProduct } from "@/types";
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
-const AddToCart = ({ product }: { product: IProduct }) => {
+interface IAddToCartProps {
+  product: IProduct;
+  variant?: "outline" | "default" | "destructive" | "secondary";
+}
+
+const AddToCart = ({ product, variant = "outline" }: IAddToCartProps) => {
   const { addToCart } = useCart();
+  const router = useRouter();
+  const { user } = useUser();
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
+    if (!user) {
+      return router.push("/signin");
+    }
     addToCart({
       id: product.productId,
       image: product.image,
@@ -20,7 +32,7 @@ const AddToCart = ({ product }: { product: IProduct }) => {
   };
 
   return (
-    <Button type="button" variant="outline" onClick={handleAddToCart}>
+    <Button type="button" variant={variant} onClick={handleAddToCart}>
       Add to Cart
     </Button>
   );

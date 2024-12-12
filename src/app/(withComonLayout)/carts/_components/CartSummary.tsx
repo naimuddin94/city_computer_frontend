@@ -33,7 +33,7 @@ function CartSummary({ totalAmount, discount, tax, total }: CartSummaryProps) {
         <span>Total</span>
         <span>${total.toFixed(2)}</span>
       </div>
-      <Link href="/dashboard/checkout">
+      <Link href="/checkout">
         <Button size="lg" className="w-full">
           Proceed to Checkout
         </Button>
