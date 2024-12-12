@@ -6,7 +6,6 @@ import { CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUser } from "@/context/user.context";
-import { defaultValues } from "@/fakeData";
 import { AuthSchema } from "@/schema/auth.schema";
 import { signinUser } from "@/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +28,7 @@ const SigninForm = () => {
     register,
     handleSubmit,
     formState: { isSubmitting, errors },
-  } = useForm({ defaultValues, resolver: zodResolver(AuthSchema.loginSchema) });
+  } = useForm({ resolver: zodResolver(AuthSchema.loginSchema) });
 
   const onSubmit = async (data: FieldValues) => {
     try {
@@ -66,7 +65,7 @@ const SigninForm = () => {
               required
             />
             <span className="text-primary text-sm">
-              {errors.email && errors.email.message}
+              {errors?.email && (errors.email.message as string)}
             </span>
           </div>
           <div className="space-y-2 relative">
@@ -87,7 +86,7 @@ const SigninForm = () => {
               required
             />
             <span className="text-primary text-sm">
-              {errors.password && errors.password.message}
+              {errors?.password && (errors.password.message as string)}
             </span>
             <div
               onClick={() => setShowPassword(!showPassword)}

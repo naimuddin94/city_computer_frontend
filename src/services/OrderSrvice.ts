@@ -40,3 +40,27 @@ export const calculateAmount = async (orderItems: IOrderItemType[]) => {
     return error?.response?.data;
   }
 };
+
+export interface IOrderData {
+  address: string;
+  phone: string;
+  paymentInfo: string;
+  payAmount: number;
+  orderItems: IOrderItemType[];
+}
+
+export const createOrder = async (orderData: IOrderData) => {
+  try {
+    const data = await apiFetch("/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    });
+
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};

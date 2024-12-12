@@ -2,6 +2,7 @@
 "use server";
 
 import axiosInstance from "@/lib/axiosInstance";
+import { apiFetch } from "@/lib/fetch";
 import { ITokenUser } from "@/types";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
@@ -47,6 +48,15 @@ export const signout = async () => {
 
     const { data } = await axiosInstance.post("/auth/signout");
 
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};
+
+export const getProfile = async () => {
+  try {
+    const { data } = await apiFetch.post("/auth/profile");
     return data;
   } catch (error: any) {
     return error?.response?.data;

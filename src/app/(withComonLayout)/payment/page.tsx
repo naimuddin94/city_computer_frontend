@@ -18,6 +18,7 @@ export default function App() {
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Fetch payment key from API
   const fetchPaymentKey = async () => {
     setLoading(true);
     try {
@@ -29,6 +30,8 @@ export default function App() {
       setLoading(false);
     }
   };
+
+  
 
   useEffect(() => {
     if (price > 0) {

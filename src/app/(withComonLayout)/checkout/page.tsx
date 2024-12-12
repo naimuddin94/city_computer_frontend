@@ -72,8 +72,13 @@ function CheckoutPage() {
     calculateTotalAmount();
   }, [cart, coupon]);
 
-  const handlePayment = (price: number) => {
-    router.push(`/payment?price=${price}`);
+  const handlePayment = (
+    price: number,
+    shippingInfo: { address: string; phone: string }
+  ) => {
+    router.push(
+      `/payment?price=${price}&coupon=${coupon}&address=${shippingInfo.address}&phone=${shippingInfo.phone}`
+    );
   };
 
   const onSubmit = async (data: FieldValues) => {
@@ -81,7 +86,10 @@ function CheckoutPage() {
       return toast.error("Please add shipping information");
     }
 
-    handlePayment(calculatedValues.totalAmount);
+    handlePayment(calculatedValues.totalAmount, {
+      address: data?.address,
+      phone: data?.phone,
+    });
   };
 
   const handleCoupon = async (data: FieldValues) => {
@@ -89,8 +97,6 @@ function CheckoutPage() {
       setCoupon(data?.code);
     }
   };
-
-  console.log({ coupon });
 
   return (
     <Container className="my-8">

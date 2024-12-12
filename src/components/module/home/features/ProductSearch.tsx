@@ -35,8 +35,6 @@ const ProductSearch = () => {
     }
   }, [searchTerm]);
 
-  console.log({ products });
-
   return (
     <div className="flex flex-col justify-center pb-8 pt-2 max-w-fit mx-auto relative">
       <form>
