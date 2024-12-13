@@ -1,3 +1,5 @@
+export type TOrderStatus = "pending" | "processing" | "shipped" | "delivered";
+
 export interface IChildrenProps {
   children: React.ReactNode;
 }
@@ -79,15 +81,19 @@ export interface IFilterOptions {
   sort?: string;
 }
 
-export interface IMyOrders {
+export interface IMyOrder {
   orderId: string;
   address: string;
   phone: string;
   totalAmount: number;
-  status: string;
+  status: TOrderStatus;
   paymentId: string;
   createdAt: string;
   orderItems: IOrderItem[];
+}
+
+export interface IShopOrder extends IMyOrder {
+  user: { name: string; email: string };
 }
 
 export interface IOrderItem {

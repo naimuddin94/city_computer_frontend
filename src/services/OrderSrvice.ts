@@ -2,7 +2,13 @@
 "use server";
 
 import { apiFetch } from "@/lib/fetch";
-import { IMyOrders, IOrderData, IOrderItemType, IResponse } from "@/types";
+import {
+  IMyOrder,
+  IOrderData,
+  IOrderItemType,
+  IResponse,
+  IShopOrder,
+} from "@/types";
 import { revalidateTag } from "next/cache";
 
 export const getPaymentKey = async (price: number) => {
@@ -57,12 +63,27 @@ export const createOrder = async (orderData: IOrderData) => {
   }
 };
 
-export const getMyOrders = async (): Promise<IResponse<IMyOrders[]>> => {
+export const getMyOrders = async (): Promise<IResponse<IMyOrder[]>> => {
   try {
     const data = await apiFetch("/orders", {
       cache: "force-cache",
       next: {
         tags: ["my-orders"],
+      },
+    });
+
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};
+
+export const fetchShopOrders = async (): Promise<IResponse<IShopOrder[]>> => {
+  try {
+    const data = await apiFetch("/orders/shop-orders", {
+      cache: "force-cache",
+      next: {
+        tags: ["shop-orders"],
       },
     });
 

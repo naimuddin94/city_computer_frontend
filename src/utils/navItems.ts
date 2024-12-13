@@ -69,7 +69,7 @@ export const vendorNavItems: navItem[] = [
       },
       {
         title: "Manage Product",
-        href: "/dashboard/vendor/manage-product",
+        href: "/dashboard/vendor/manage-products",
         description: "Edit or remove existing products.",
       },
       {

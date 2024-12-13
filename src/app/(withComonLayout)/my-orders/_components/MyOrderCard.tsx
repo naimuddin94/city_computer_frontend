@@ -14,12 +14,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { IMyOrders } from "@/types";
+import { IMyOrder } from "@/types";
 import { PackageIcon } from "lucide-react";
 import Image from "next/image";
 
 type TOderCardProps = {
-  order: IMyOrders;
+  order: IMyOrder;
   index: number;
 };
 
