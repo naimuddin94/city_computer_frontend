@@ -3,7 +3,7 @@
 import Loading from "@/components/shared/Loading";
 import { Button } from "@/components/ui/button";
 import { envConfig } from "@/config";
-import { getPaymentKey } from "@/services/OrderSrvice";
+import { getPaymentKey } from "@/services/OrderService";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Undo2 } from "lucide-react";

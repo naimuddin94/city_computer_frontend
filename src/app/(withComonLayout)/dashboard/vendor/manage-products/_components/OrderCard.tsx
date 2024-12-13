@@ -18,7 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { changeOrderStatus } from "@/services/OrderSrvice";
+import { changeOrderStatus } from "@/services/OrderService";
 import { IShopOrder, TOrderStatus } from "@/types";
 import { PackageIcon } from "lucide-react";
 import Image from "next/image";

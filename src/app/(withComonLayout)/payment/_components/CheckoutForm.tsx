@@ -5,7 +5,7 @@ import Container from "@/components/shared/Container";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/cart.context";
 import { useUser } from "@/context/user.context";
-import { createOrder } from "@/services/OrderSrvice";
+import { createOrder } from "@/services/OrderService";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { Loader2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";

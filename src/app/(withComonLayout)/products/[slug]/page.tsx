@@ -2,9 +2,10 @@ import AddToCart from "@/components/shared/AddToCart";
 import Container from "@/components/shared/Container";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { apiFetch } from "@/lib/fetch";
-import { IProduct, IResponse } from "@/types";
+import { IProductDetails, IResponse } from "@/types";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import Review from "./_components/Review";
 
 type Params = Promise<{ slug: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -19,7 +20,7 @@ const ProductDetailPage = async (props: IProps) => {
 
   const res = (await apiFetch(
     `/products/${params.slug}`
-  )) as IResponse<IProduct>;
+  )) as IResponse<IProductDetails>;
 
   const product = res.data;
 
@@ -54,6 +55,7 @@ const ProductDetailPage = async (props: IProps) => {
             <TabsList className="border-b">
               <TabsTrigger value="specification">Specification</TabsTrigger>
               <TabsTrigger value="description">Description</TabsTrigger>
+              <TabsTrigger value="reviews">Reviews</TabsTrigger>
               <TabsTrigger value="questions">Questions</TabsTrigger>
             </TabsList>
             <TabsContent value="specification">
@@ -102,6 +104,9 @@ const ProductDetailPage = async (props: IProps) => {
                     ))}
                 </div>
               </div>
+            </TabsContent>
+            <TabsContent value="reviews">
+              <Review productId={product.productId} />
             </TabsContent>
             <TabsContent value="questions">
               <div className="grid gap-4 py-6">

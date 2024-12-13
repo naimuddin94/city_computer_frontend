@@ -73,6 +73,13 @@ export interface IProduct {
   shop: IShop;
 }
 
+export interface IProductDetails extends IProduct {
+  reviews: {
+    comment: string;
+    user: Pick<IUser, "name" | "image" | "email">;
+  }[];
+}
+
 export interface IFilterOptions {
   page?: string;
   limit?: string;
@@ -116,4 +123,19 @@ export interface IOrderData {
   paymentInfo: string;
   payAmount: number;
   orderItems: IOrderItemType[];
+}
+
+export interface IRating {
+  productId: string;
+  userId: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}
+
+export interface IReview {
+  rating: number;
+  comment: string;
+  createdAt: string;
+  user: Pick<IUser, "name" | "image" | "email">;
 }

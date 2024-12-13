@@ -9,8 +9,8 @@ const Rating = ({ rating }: { rating: number }) => {
             key={index}
             className={`w-5 h-5 ${
               index < rating
-                ? "fill-primary"
-                : "fill-muted stroke-muted-foreground"
+                ? "fill-primary stroke-none"
+                : "fill-slate-300  stroke-none"
             }`}
           />
         ))}

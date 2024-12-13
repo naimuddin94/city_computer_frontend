@@ -1,6 +1,6 @@
 import NoDataFound from "@/components/shared/NoDataFound";
 import { getCurrentUser } from "@/services/AuthService";
-import { fetchShopOrders } from "@/services/OrderSrvice";
+import { fetchShopOrders } from "@/services/OrderService";
 import { redirect } from "next/navigation";
 import OrderCard from "./_components/OrderCard";
 

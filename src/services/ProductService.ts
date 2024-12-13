@@ -13,8 +13,8 @@ export const getProducts = async (params: IFilterOptions) => {
       Object.entries(params).filter(([_, value]) => value !== undefined)
     ).toString();
 
-    const { data } = await apiFetch(`/products?${queryParams}`, {
-      cache: "force-cache",
+    const data = await apiFetch(`/products?${queryParams}`, {
+      cache: "default",
       next: {
         tags: ["products"],
       },

@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/cart.context";
 import { useUser } from "@/context/user.context";
-import { calculateAmount } from "@/services/OrderSrvice";
+import { calculateAmount } from "@/services/OrderService";
 import { Loader } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
