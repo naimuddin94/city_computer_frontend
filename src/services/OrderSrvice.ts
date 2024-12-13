@@ -92,3 +92,23 @@ export const fetchShopOrders = async (): Promise<IResponse<IShopOrder[]>> => {
     return error?.response?.data;
   }
 };
+
+export const changeOrderStatus = async (orderId: string, status: string) => {
+  try {
+    const data = await apiFetch(`/orders/change-status/${orderId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status }),
+    });
+
+    if (data?.success) {
+      revalidateTag("shop-orders");
+    }
+
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};

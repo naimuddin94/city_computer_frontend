@@ -56,7 +56,7 @@ export const signout = async () => {
 
 export const getProfile = async () => {
   try {
-    const { data } = await apiFetch.post("/auth/profile");
+    const { data } = await apiFetch("/auth/profile");
     return data;
   } catch (error: any) {
     return error?.response?.data;

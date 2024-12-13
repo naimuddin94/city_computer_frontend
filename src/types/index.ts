@@ -94,6 +94,7 @@ export interface IMyOrder {
 
 export interface IShopOrder extends IMyOrder {
   user: { name: string; email: string };
+  paymentStatus: string;
 }
 
 export interface IOrderItem {

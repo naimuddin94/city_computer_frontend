@@ -1,3 +1,6 @@
+"use client";
+
+import Hover from "@/components/shared/Hover";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +20,8 @@ import {
 import { IMyOrder } from "@/types";
 import { PackageIcon } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { BsStarFill } from "react-icons/bs";
 
 type TOderCardProps = {
   order: IMyOrder;
@@ -24,6 +29,8 @@ type TOderCardProps = {
 };
 
 const MyOrderCard = ({ order, index }: TOderCardProps) => {
+  const [showModel, setShowModel] = useState(false);
+  const [productId, setProductId] = useState("");
   return (
     <>
       <Card key={order.orderId}>
@@ -37,7 +44,7 @@ const MyOrderCard = ({ order, index }: TOderCardProps) => {
           </span>
           <Badge
             variant={
-              order.status === "received"
+              order.status === "delivered"
                 ? "secondary"
                 : order.status === "processing"
                 ? "outline"
@@ -53,10 +60,16 @@ const MyOrderCard = ({ order, index }: TOderCardProps) => {
             <TableHeader>
               <TableRow>
                 <TableHead>Product</TableHead>
-                <TableHead className="hidden sm:table-cell">Shop</TableHead>
-                <TableHead className="hidden sm:table-cell">Quantity</TableHead>
-                <TableHead className="hidden sm:table-cell">Price</TableHead>
-                <TableHead className="hidden sm:table-cell">Discount</TableHead>
+                <TableHead className="pl-16">Shop</TableHead>
+                <TableHead className="hidden sm:table-cell text-center">
+                  Quantity
+                </TableHead>
+                <TableHead className="hidden sm:table-cell text-center">
+                  Price
+                </TableHead>
+                <TableHead className="hidden sm:table-cell text-center">
+                  Discount
+                </TableHead>
                 <TableHead className="text-right">Total</TableHead>
               </TableRow>
             </TableHeader>
@@ -78,19 +91,48 @@ const MyOrderCard = ({ order, index }: TOderCardProps) => {
                         <h3>{product.name}</h3>
                       </div>
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell">
-                      <h3>{product.shop.name}</h3>
-                      <p className="text-xs text-slate-600">
-                        {product.shop.address}
-                      </p>
+                    <TableCell className="flex">
+                      <div>
+                        {order.status === "delivered" && (
+                          <>
+                            <Hover
+                              image={product.shop.logo}
+                              heading="Follow shop!"
+                              description="Follow the shop for improve customer service and get notification from new product from this shop!"
+                            >
+                              <Button
+                                onClick={() => {
+                                  setShowModel(true);
+                                  setProductId(product.productId);
+                                }}
+                                disabled={order.status !== "delivered"}
+                                variant="ghost"
+                                size="sm"
+                                className=""
+                              >
+                                <BsStarFill
+                                  size={18}
+                                  className="text-primary"
+                                />
+                              </Button>
+                            </Hover>
+                          </>
+                        )}
+                      </div>
+                      <div>
+                        <h3>{product.shop.name}</h3>
+                        <p className="text-xs text-slate-600">
+                          {product.shop.address}
+                        </p>
+                      </div>
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell">
+                    <TableCell className="hidden sm:table-cell text-center">
                       <div>{quantity}</div>
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell">
+                    <TableCell className="hidden sm:table-cell text-center">
                       {product.price}
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell">
+                    <TableCell className="hidden sm:table-cell text-center">
                       {(product.price * quantity - price).toFixed(2)}
                     </TableCell>
                     <TableCell className="text-right">
@@ -102,13 +144,10 @@ const MyOrderCard = ({ order, index }: TOderCardProps) => {
             </TableBody>
           </Table>
         </CardContent>
-        <CardFooter className="flex items-center justify-between">
-          <div className="text-muted-foreground text-sm">
+        <CardFooter className="flex justify-end">
+          <div className="text-muted-foreground">
             Total: ${order.totalAmount.toFixed(2)}
           </div>
-          <Button variant="outline" size="sm">
-            View Order
-          </Button>
         </CardFooter>
       </Card>
     </>
