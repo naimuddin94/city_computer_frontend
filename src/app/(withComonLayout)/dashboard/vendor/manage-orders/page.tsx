@@ -2,7 +2,7 @@ import NoDataFound from "@/components/shared/NoDataFound";
 import { getCurrentUser } from "@/services/AuthService";
 import { fetchShopOrders } from "@/services/OrderService";
 import { redirect } from "next/navigation";
-import OrderCard from "./_components/OrderCard";
+import OrderCard from "../manage-orders/_components/OrderCard";
 
 async function ManageOrders() {
   const user = await getCurrentUser();

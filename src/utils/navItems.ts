@@ -24,14 +24,14 @@ export const adminNavItems: navItem[] = [
         description: "Add a new category to your store.",
       },
       {
-        title: "Manage Product",
-        href: "/dashboard/admin/manage-product",
-        description: "Edit or remove existing products.",
+        title: "Manage Shops",
+        href: "/dashboard/admin/manage-shops",
+        description: "Edit or remove existing manage shops.",
       },
       {
-        title: "Reviews",
-        href: "/dashboard/admin/reviews",
-        description: "Read and respond to customer reviews.",
+        title: "Manage Users",
+        href: "/dashboard/admin/manage-users",
+        description: "Edit or remove existing manage users.",
       },
       {
         title: "Orders",
@@ -73,8 +73,8 @@ export const vendorNavItems: navItem[] = [
         description: "Edit or remove existing products.",
       },
       {
-        title: "Orders",
-        href: "/dashboard/vendor/my-orders",
+        title: "Manage Orders",
+        href: "/dashboard/vendor/manage-orders",
         description: "Track your order history and status.",
       },
       {
