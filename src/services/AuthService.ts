@@ -11,6 +11,7 @@ import { FieldValues } from "react-hook-form";
 export const signupUser = async (userData: FieldValues) => {
   try {
     const cookieStore = await cookies();
+    //! here use axios instead
     const { data } = await axiosInstance.post("/auth/signup", userData);
 
     if (data?.success) {
@@ -27,6 +28,7 @@ export const signupUser = async (userData: FieldValues) => {
 export const signinUser = async (userData: FieldValues) => {
   try {
     const cookieStore = await cookies();
+    //! here use axios instead
     const { data } = await axiosInstance.post("/auth/signin", userData);
 
     if (data?.success) {
@@ -46,6 +48,7 @@ export const signout = async () => {
     cookieStore.delete("accessToken");
     cookieStore.delete("refreshToken");
 
+    //! here use axios instead
     const { data } = await axiosInstance.post("/auth/signout");
 
     return data;
