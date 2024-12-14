@@ -146,6 +146,8 @@ export interface IShop {
   address: string;
   description: string;
   logo: string;
+  status: string;
+  isVerified: boolean;
   createdAt: string;
   vendor: Vendor;
 }
