@@ -35,6 +35,8 @@ const ProductForm = ({ categories, product }: IProps) => {
   const onSubmit = async (data: FieldValues) => {
     const formData = new FormData();
 
+    console.log("from Product form: ", data);
+
     // Append form fields except the file
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value as string);

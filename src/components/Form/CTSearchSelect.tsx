@@ -49,7 +49,7 @@ const CTSearchSelect = ({
 
   const handleSelect = (selectedValue: string) => {
     setValueState(selectedValue);
-    setValue(name, value);
+    setValue(name, selectedValue);
     setOpen(false);
   };
 
