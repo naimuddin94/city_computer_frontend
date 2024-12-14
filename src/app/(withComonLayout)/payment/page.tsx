@@ -8,19 +8,18 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Undo2 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { toast } from "sonner";
 import CheckoutForm from "./_components/CheckoutForm";
 
 const stripePromise = loadStripe(envConfig.stripe_pk as string);
 
-export default function App() {
+function PaymentComponent() {
   const searchParams = useSearchParams();
   const price = Number(searchParams.get("price"));
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Fetch payment key from API
   const fetchPaymentKey = async () => {
     setLoading(true);
     try {
@@ -37,7 +36,7 @@ export default function App() {
     if (price > 0) {
       fetchPaymentKey();
     }
-  }, []);
+  }, [price]);
 
   const options = {
     clientSecret,
@@ -49,7 +48,7 @@ export default function App() {
 
   if (!clientSecret) {
     return (
-      <div className="min-h-[60vh] flex  flex-col justify-center items-center">
+      <div className="min-h-[60vh] flex flex-col justify-center items-center">
         <h1 className="text-3xl text-primary font-black mb-4">
           Your stripe key not fetched successfully
         </h1>
@@ -66,5 +65,13 @@ export default function App() {
     <Elements stripe={stripePromise} options={options}>
       <CheckoutForm clientSecret={clientSecret} />
     </Elements>
+  );
+}
+
+export default function App() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <PaymentComponent />
+    </Suspense>
   );
 }

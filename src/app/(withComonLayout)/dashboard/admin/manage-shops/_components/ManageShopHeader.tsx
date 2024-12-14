@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 
 const ManageShopHeader = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState("");
 
   const router = useRouter();

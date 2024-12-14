@@ -6,7 +6,9 @@ import {
 } from "@/components/ui/card";
 
 import Container from "@/components/shared/Container";
+import Loading from "@/components/shared/Loading";
 import Link from "next/link";
+import { Suspense } from "react";
 import SigninForm from "./_components/SigninForm";
 
 function Signin() {
@@ -21,7 +23,9 @@ function Signin() {
             Enter your email and password to access your account.
           </CardDescription>
         </CardHeader>
-        <SigninForm />
+        <Suspense fallback={<Loading />}>
+          <SigninForm />
+        </Suspense>
         <Link
           href="/signup"
           className="inline-block w-full text-center text-sm  font-medium underline underline-offset-4 hover:text-primary pb-8"

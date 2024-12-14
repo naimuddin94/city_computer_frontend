@@ -1,10 +1,12 @@
 import Container from "@/components/shared/Container";
+import Loading from "@/components/shared/Loading";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Suspense } from "react";
 import SignupForm from "./_components/SignupForm";
 
 function CustomerSignup() {
@@ -19,7 +21,9 @@ function CustomerSignup() {
             Enter your details below to get started.
           </CardDescription>
         </CardHeader>
-        <SignupForm />
+        <Suspense fallback={<Loading />}>
+          <SignupForm />
+        </Suspense>
       </Card>
     </Container>
   );

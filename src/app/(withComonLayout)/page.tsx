@@ -11,7 +11,7 @@ import { getProducts } from "@/services/ProductService";
 async function Home() {
   const res = await getProducts({ page: "1", limit: "8" });
 
-  const products = res.data;
+  const products = res?.data;
 
   return (
     <section className="-mt-[3.8rem]">

@@ -116,7 +116,13 @@ function Navbar() {
       <Container>
         <nav className="hidden lg:flex justify-between items-center">
           <div className="flex items-center">
-            <img src={logo} alt="Logo image" className="w-12" />
+            <Image
+              src={logo}
+              alt="Logo image"
+              className="w-12"
+              width={48}
+              height={48}
+            />
             <h3 className="text-lg font-bold">KS</h3>
           </div>
           <div>

@@ -17,9 +17,10 @@ const ProductSection = ({ products }: IProps) => {
       </p>
       <ProductSearch />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.productId} />
-        ))}
+        {products &&
+          products?.map((product) => (
+            <ProductCard product={product} key={product.productId} />
+          ))}
       </div>
     </Container>
   );
