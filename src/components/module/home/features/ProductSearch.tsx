@@ -48,30 +48,31 @@ const ProductSearch = () => {
 
       <div
         className={`absolute top-12 bg-white ${
-          searchTerm.trim().length <= 0 && "hidden"
+          (!searchTerm || searchTerm?.trim()?.length <= 0) && "hidden"
         }`}
       >
-        {products.length > 0 && (
+        {products?.length > 0 && (
           <ScrollArea className="h-72 max-w-sm w-[23rem] rounded-md border">
             <div className="p-4">
-              {products.map((product) => (
-                <Link href={`/products/${product.id}`} key={product.id}>
-                  <div className="flex gap-4 hover:bg-slate-100 px-4 py-2">
-                    <Image
-                      src={product.thumbnail}
-                      alt="product image"
-                      width={50}
-                      height={50}
-                      className="rounded"
-                    />
-                    <div>
-                      <h3>{product.name}</h3>
-                      <h5>{product.shop}</h5>
+              {products &&
+                products.map((product) => (
+                  <Link href={`/products/${product.id}`} key={product.id}>
+                    <div className="flex gap-4 hover:bg-slate-100 px-4 py-2">
+                      <Image
+                        src={product.thumbnail}
+                        alt="product image"
+                        width={50}
+                        height={50}
+                        className="rounded"
+                      />
+                      <div>
+                        <h3>{product.name}</h3>
+                        <h5>{product.shop}</h5>
+                      </div>
                     </div>
-                  </div>
-                  <Separator className="my-2" />
-                </Link>
-              ))}
+                    <Separator className="my-2" />
+                  </Link>
+                ))}
             </div>
           </ScrollArea>
         )}
