@@ -30,7 +30,7 @@ const ProductSearch = () => {
   };
 
   useEffect(() => {
-    if (searchTerm && searchTerm.trim().length > 0) {
+    if (searchTerm && searchTerm?.trim()?.length > 0) {
       fetchProducts();
     }
   }, [searchTerm]);
