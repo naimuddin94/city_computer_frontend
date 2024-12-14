@@ -25,7 +25,7 @@ const ShopForm = () => {
       const res = await addShop(formData);
       if (res?.success) {
         toast.success(res.message);
-        router.push("/dashboard/vendor/create-shop");
+        router.push("/");
       } else if (!res?.success) {
         toast.error(res.message);
       }
