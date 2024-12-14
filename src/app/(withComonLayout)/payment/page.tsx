@@ -49,7 +49,7 @@ export default function App() {
 
   if (!clientSecret) {
     return (
-      <div className="min-h-[60vh] flex justify-center items-center">
+      <div className="min-h-[60vh] flex  flex-col justify-center items-center">
         <h1 className="text-3xl text-primary font-black mb-4">
           Your stripe key not fetched successfully
         </h1>

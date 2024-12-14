@@ -16,6 +16,7 @@ export interface IInputProps {
   name: string;
   label: string;
   placeholder: string;
+  defaultValue?: string | null;
 }
 
 export interface ITokenUser {

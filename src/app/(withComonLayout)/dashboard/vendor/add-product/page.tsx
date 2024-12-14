@@ -1,9 +1,19 @@
 import { apiFetch } from "@/lib/fetch";
 import { getCurrentUser } from "@/services/AuthService";
+import { getProductById } from "@/services/ProductService";
 import { redirect } from "next/navigation";
 import ProductForm from "./_components/ProductForm";
 
-async function AddProduct() {
+type Params = Promise<{ slug: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+async function AddProduct(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const searchParams = await props.searchParams;
+  const productId = searchParams.product;
+
   const user = await getCurrentUser();
 
   if (!user) {
@@ -25,6 +35,15 @@ async function AddProduct() {
     return redirect("/dashboard/vendor/create-shop");
   }
 
+  let product = null;
+
+  if (productId) {
+    const productResponse = await getProductById(productId as string);
+    if (productResponse?.success) {
+      product = productResponse.data;
+    }
+  }
+
   return (
     <section className="grid gap-6 px-4 py-8 mx-auto max-w-4xl sm:px-6 lg:px-8">
       <div className="flex items-center justify-between">
@@ -32,7 +51,7 @@ async function AddProduct() {
           Add New Product
         </h1>
       </div>
-      <ProductForm categories={data?.data} />
+      <ProductForm categories={data?.data} product={product} />
     </section>
   );
 }

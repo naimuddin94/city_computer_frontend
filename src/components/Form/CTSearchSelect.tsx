@@ -30,9 +30,16 @@ interface IProps {
   placeholder: string;
   options: IOption[];
   required?: boolean;
+  defaultValue?: string;
 }
 
-const CTSearchSelect = ({ label, name, options, placeholder }: IProps) => {
+const CTSearchSelect = ({
+  label,
+  name,
+  options,
+  placeholder,
+  defaultValue,
+}: IProps) => {
   const {
     setValue,
     formState: { errors, isSubmitSuccessful },
@@ -42,12 +49,16 @@ const CTSearchSelect = ({ label, name, options, placeholder }: IProps) => {
 
   const handleSelect = (selectedValue: string) => {
     setValueState(selectedValue);
-    setValue(name, selectedValue);
+    setValue(name, value);
     setOpen(false);
   };
 
   useEffect(() => {
-    setValueState("");
+    if (defaultValue) {
+      setValueState(defaultValue);
+    } else {
+      setValueState("");
+    }
   }, [isSubmitSuccessful]);
 
   return (

@@ -72,9 +72,7 @@ export const getCurrentUser = async () => {
   if (accessToken) {
     decodedToken = (await jwtDecode(accessToken)) as ITokenUser;
 
-    const { data } = await axiosInstance.get(
-      `/auth/get-role/${decodedToken.userId}`
-    );
+    const data = await apiFetch(`/auth/get-role/${decodedToken.userId}`);
 
     return {
       userId: decodedToken.userId as string,

@@ -13,9 +13,10 @@ import {
 
 interface IProps {
   categories: { categoryId: string; name: string }[];
+  category?: string;
 }
 
-const ProductInfoForm = ({ categories }: IProps) => {
+const ProductInfoForm = ({ categories, category }: IProps) => {
   const options = categories.map((category) => ({
     label: category.name,
     value: category.categoryId,
@@ -53,6 +54,7 @@ const ProductInfoForm = ({ categories }: IProps) => {
                 name="category"
                 label="Category"
                 placeholder="Select category"
+                defaultValue={category}
               />
             </div>
           </div>

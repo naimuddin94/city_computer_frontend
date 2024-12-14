@@ -14,17 +14,26 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
-const CTImageForm = ({ name, label, placeholder }: IInputProps) => {
+const CTImageForm = ({
+  name,
+  label,
+  placeholder,
+  defaultValue,
+}: IInputProps) => {
   const {
     setValue,
     formState: { errors, isSubmitSuccessful },
   } = useFormContext();
   const [previewUrl, setPreviewUrl] = useState<string | ArrayBuffer | null>(
-    null
+    defaultValue as null | string
   );
 
   useEffect(() => {
-    setPreviewUrl(null);
+    if (defaultValue) {
+      setPreviewUrl(defaultValue);
+    } else {
+      setPreviewUrl(null);
+    }
   }, [isSubmitSuccessful]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
