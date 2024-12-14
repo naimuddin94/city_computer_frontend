@@ -1,3 +1,5 @@
+"use client"
+
 import AddToCart from "@/components/shared/AddToCart";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,10 +12,18 @@ import { IProduct } from "@/types";
 import { truncate } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { MouseEvent } from "react";
 
 function ProductCard({ product }: { product: IProduct }) {
   const { productId, name, image, description, price, category, shop } =
     product;
+
+  const handleShopDetails = (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    return redirect(`/shop/${shop.shopId}`);
+  };
 
   return (
     <Link href={`/products/${productId}`} className="flex flex-col h-full">
@@ -36,7 +46,10 @@ function ProductCard({ product }: { product: IProduct }) {
             <CardDescription className="text-muted-foreground text-justify">
               {truncate(description, 7)}
             </CardDescription>
-            <CardTitle className="text-md font-semibold hover:underline">
+            <CardTitle
+              onClick={handleShopDetails}
+              className="text-md font-semibold hover:underline"
+            >
               {shop.name}
             </CardTitle>
           </div>

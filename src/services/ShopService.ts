@@ -2,7 +2,7 @@
 "use server";
 
 import { apiFetch } from "@/lib/fetch";
-import { ICategory, IResponse } from "@/types";
+import { ICategory, IResponse, IShop } from "@/types";
 import { revalidateTag } from "next/cache";
 
 export const addShop = async (
@@ -18,6 +18,26 @@ export const addShop = async (
       revalidateTag("shops");
     }
 
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};
+
+export const getShopInfo = async (
+  shopId: string
+): Promise<IResponse<IShop>> => {
+  try {
+    const data = await apiFetch(`/shops/${shopId}`);
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+};
+
+export const getAllShops = async (): Promise<IResponse<IShop[]>> => {
+  try {
+    const data = await apiFetch("/shops");
     return data;
   } catch (error: any) {
     return error?.response?.data;

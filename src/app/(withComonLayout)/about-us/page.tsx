@@ -8,7 +8,6 @@ import Container from "@/components/shared/Container";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import Link from "next/link";
 
 function About() {
   return (

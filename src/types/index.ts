@@ -139,3 +139,20 @@ export interface IReview {
   createdAt: string;
   user: Pick<IUser, "name" | "image" | "email">;
 }
+
+export interface IShop {
+  shopId: string;
+  name: string;
+  address: string;
+  description: string;
+  logo: string;
+  createdAt: string;
+  vendor: Vendor;
+}
+
+export interface Vendor {
+  userId: string;
+  name: string;
+  email: string;
+  image: string | null;
+}
