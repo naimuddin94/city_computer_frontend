@@ -78,8 +78,8 @@ export const vendorNavItems: navItem[] = [
         description: "Track your order history and status.",
       },
       {
-        title: "Reviews",
-        href: "/dashboard/vendor/reviews",
+        title: "Manage Coupons",
+        href: "/dashboard/vendor/manage-coupons",
         description: "Read and respond to customer reviews.",
       },
     ],

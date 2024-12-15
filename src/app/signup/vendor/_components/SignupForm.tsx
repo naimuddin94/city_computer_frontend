@@ -11,17 +11,14 @@ import { signupUser } from "@/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LucideEye, LucideEyeOff } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const searchParams = useSearchParams();
   const router = useRouter();
-
-  const redirect = searchParams.get("redirect");
 
   const { setUser } = useUser();
   const {
@@ -51,11 +48,7 @@ const SignupForm = () => {
       if (res?.success) {
         toast.success(res.message);
         setUser(res.data);
-        if (redirect) {
-          router.push(redirect);
-        } else {
-          router.push("/");
-        }
+        router.push("/");
       } else if (!res?.success) {
         toast.error(res.message);
       }

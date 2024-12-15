@@ -4,8 +4,16 @@ import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { getShopInfo } from "@/services/ShopService";
 import moment from "moment";
+import CouponRow from "./_components/CouponRow";
 
 type Params = Promise<{ slug: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -50,29 +58,63 @@ export default async function ShopDetailsPage(props: {
             <h3 className="text-lg font-semibold mb-2">About Us</h3>
             <p className="text-muted-foreground">{shop.description}</p>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Vendor Information</h3>
-            <div className="flex items-center gap-4">
-              <Avatar className="w-12 h-12">
-                <AvatarImage
-                  src={shop.vendor.image || undefined}
-                  alt={shop.vendor.name}
-                />
-                <AvatarFallback>{shop.vendor.name.charAt(0)}</AvatarFallback>
-              </Avatar>
+          <div className="sm:flex justify-between gap-4">
+            <div>
               <div>
-                <p className="font-medium">{shop.vendor.name}</p>
-                <p className="text-sm text-muted-foreground flex items-center">
-                  <Mail className="w-4 h-4 mr-2" />
-                  {shop.vendor.email}
-                </p>
+                <h3 className="text-lg font-semibold mb-2">
+                  Vendor Information
+                </h3>
+                <div className="flex items-center gap-4">
+                  <Avatar className="w-12 h-12">
+                    <AvatarImage
+                      src={shop.vendor.image || undefined}
+                      alt={shop.vendor.name}
+                    />
+                    <AvatarFallback>
+                      {shop.vendor.name.charAt(0)}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-medium">{shop.vendor.name}</p>
+                    <p className="text-sm text-muted-foreground flex items-center">
+                      <Mail className="w-4 h-4 mr-2" />
+                      {shop.vendor.email}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground flex mt-3">
+                <Calendar className="w-4 h-4 mr-2" />
+                Shop created on{" "}
+                {moment(shop.createdAt).subtract(10, "days").calendar()}
               </div>
             </div>
-          </div>
-          <div className="text-sm text-muted-foreground flex">
-            <Calendar className="w-4 h-4 mr-2" />
-            Shop created on{" "}
-            {moment(shop.createdAt).subtract(10, "days").calendar()}
+            <div className="flex-1 max-w-md">
+              {shop?.coupon && shop.coupon?.length > 0 && (
+                <Card className="w-full max-w-4xl mx-auto mt-8">
+                  <CardTitle className="text-center py-3 text-primary">
+                    Coupons
+                  </CardTitle>
+                  <CardContent>
+                    <Table className="mb-8">
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Code</TableHead>
+                          <TableHead>Discount</TableHead>
+                          <TableHead>Expiry</TableHead>
+                          <TableHead>Copy</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {shop?.coupon.map((coupon) => (
+                          <CouponRow key={coupon.code} coupon={coupon} />
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>

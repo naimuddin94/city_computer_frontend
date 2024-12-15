@@ -8,6 +8,7 @@ import {
   IResponse,
   IResponseWithMetadata,
   IShop,
+  ISingleShop,
 } from "@/types";
 import { revalidateTag } from "next/cache";
 
@@ -32,7 +33,7 @@ export const addShop = async (
 
 export const getShopInfo = async (
   shopId: string
-): Promise<IResponse<IShop>> => {
+): Promise<IResponse<ISingleShop>> => {
   try {
     const data = await apiFetch(`/shops/${shopId}`);
     return data;

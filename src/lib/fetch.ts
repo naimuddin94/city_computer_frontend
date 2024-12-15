@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { api_url } from "@/constant";
+import { envConfig } from "@/config";
 import { cookies } from "next/headers";
 
 type FetchOptions = RequestInit & {
@@ -22,7 +22,10 @@ export async function apiFetch(endpoint: string, options: FetchOptions = {}) {
   };
 
   try {
-    const response = await fetch(`${api_url}${endpoint}`, modifiedOptions);
+    const response = await fetch(
+      `${envConfig.api_host}${endpoint}`,
+      modifiedOptions
+    );
 
     // Parse JSON response
     return response.json();

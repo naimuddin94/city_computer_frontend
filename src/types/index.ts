@@ -159,3 +159,14 @@ export interface Vendor {
   email: string;
   image: string | null;
 }
+
+export interface ICoupon {
+  code: string;
+  discount: number;
+  expiryDate: Date;
+  shopId: string;
+}
+
+export interface ISingleShop extends IShop {
+  coupon: ICoupon[];
+}
