@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔗 City Computer E-Commerce Frontend
 
-## Getting Started
+The frontend of the City Computer E-Commerce platform is designed to provide a seamless and engaging shopping experience for customers and vendors. Built with modern web technologies such as Next.js, React, and TypeScript, the frontend ensures fast loading times, intuitive navigation, and smooth user interactions.
 
-First, run the development server:
+[![Frontend Live](https://img.shields.io/badge/Frontend-Live-brightgreen?style=for-the-badge)](https://citycomputer.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[![API Live](https://img.shields.io/badge/API-Live-brightgreen?style=for-the-badge)](https://citycomputersbackend.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **Technologies Used**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js:** React-based framework for building fast, SEO-friendly websites.
+- **React:** A JavaScript library for building user interfaces.
+- **TypeScript:** Enhances development with static typing.
+- **ShadCN:** UI components and design system for creating modern interfaces.
+- **TailwindCSS:** Utility-first CSS framework for rapid UI development.
+- **Framer Motion:** Adds smooth animations and transitions.
+- **Axios:** HTTP client for making API requests.
+- **Redux Toolkit (if applicable):** Efficient state management (if applicable).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## **Features**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **User Interface**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Responsive Design:** Optimized for desktops, tablets, and mobile devices.
+- **Intuitive Navigation:** Easy-to-use categories and filters for product discovery.
+- **Search Functionality:** Find products by name, brand, or category.
+- **Product Details:** View detailed information and images of each product.
 
-## Deploy on Vercel
+### **User Authentication**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **JWT Authentication:** Secure login and signup process for customers and vendors.
+- **Role-Based Access Control:** Differentiates between admin, vendor, and customer users.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **Product Display**
+
+- **Product Listings:** Showcase products with filters and sorting options.
+- **Product Reviews & Ratings:** Customers can leave feedback and ratings.
+- **Product Images:** Display product images via Cloudinary.
+
+### **Cart & Checkout**
+
+- **Single-Vendor Cart:** Users can add products to their cart and proceed to checkout.
+- **Payment Integration:** Secure payment via Stripe and Aamarpay gateways.
+- **Coupons & Discounts:** Users can apply promotional codes for discounts.
+
+### **Vendor Dashboard**
+
+- **Product Management:** Vendors can manage their products, stock levels, and prices.
+- **Sales Data:** View sales and order history.
+
+### **Admin Dashboard**
+
+- **Order Management:** Admins can view and process orders.
+- **User Management:** Admins can manage users, vendors, and customers.
+
+### **Security**
+
+- **Data Protection:** Implements security best practices to protect user data.
+
+---
+
+
+### **Components:** Reusable UI elements like buttons, modals, and product cards.
+
+### **Pages:** Each page corresponds to a route, such as the homepage, product details, and checkout page.
+
+### **Utils:** Contains utility functions like API requests and form validation.
+
+### **Public:** Stores static files like images.
+
+---
+
+## **Getting Started**
+
+### **Prerequisites**
+
+- Node.js
+- Yarn (or npm)
+
+### **Installation**
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/naimuddin94/city_computer_frontend.git
+   ```
+
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd city_computer_frontend
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   yarn install
+   ```
+
+4. **Set environment variables:**
+   Create a `.env` file in the root directory based on `.env.example`.
+
+5. **Start the development server:**
+
+   ```bash
+   yarn dev
+   ```
+
+6. **Build the project:**
+   ```bash
+   yarn build
+   ```
+
+---
+
+## **API Documentation**
+
+Detailed API documentation is available through Postman. It includes endpoints, request formats, and response structures.
+
+[![Postman Docs](https://img.shields.io/badge/Postman-API_Docs-orange?style=for-the-badge&logo=postman)](https://documenter.getpostman.com/view/34122341/2sAYHzFhRZ)
+
+---
+
+## **Database Diagram**
+
+![Database Diagram](https://res.cloudinary.com/dxoncladp/image/upload/v1734270683/city_computer_final_db_diagram_qbgbcz.png)
+
+---
+
+## **Contributing**
+
+Contributions are welcome! Fork the repository, make changes, and submit a pull request.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+
+## **Contact**
+
+For questions or suggestions, feel free to reach out:
+
+[![Connect on LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](www.linkedin.com/in/iamnaimuddin)

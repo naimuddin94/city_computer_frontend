@@ -45,7 +45,7 @@ const SuccessDialog = ({
             <strong>Transaction ID:</strong> {orderDetails.paymentId}
           </p>
           <p>
-            <strong>Total Amount:</strong> ${orderDetails.totalAmount / 100}
+            <strong>Total Amount:</strong> ${orderDetails.totalAmount}
           </p>
           <p>
             <strong>Order Date:</strong>{" "}
