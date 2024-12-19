@@ -26,7 +26,7 @@ function ProductCard({ product }: { product: IProduct }) {
   };
 
   return (
-    <Link href={`/products/${productId}`} className="flex flex-col h-full">
+    <Link href={`/product/${productId}`} className="flex flex-col h-full">
       <Card className="w-full flex flex-col justify-between max-w-md hover:shadow hover:shadow-theme/50 duration-500 flex-grow">
         <div className="p-4 flex-1">
           <Image
