@@ -17,7 +17,6 @@ The frontend of the City Computer E-Commerce platform is designed to provide a s
 - **TailwindCSS:** Utility-first CSS framework for rapid UI development.
 - **Framer Motion:** Adds smooth animations and transitions.
 - **Axios:** HTTP client for making API requests.
-- **Redux Toolkit (if applicable):** Efficient state management (if applicable).
 
 ---
 
